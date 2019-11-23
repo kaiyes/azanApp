@@ -25,11 +25,11 @@ function renderIconContainer(userGender) {
   return (
     <View style={styles.iconsContainer}>
       {gender === userGender ? (
-        <TouchableOpacity style={styles.icon} onPress={this._onChatPress}>
-          <Image
-            style={{ width: 73, height: 70 }}
-            source={require('../assets/icons/Chat.png')}
-          />
+        <TouchableOpacity
+          style={styles.icon}
+          onPress={this._onChatPress}
+        >
+          <Text style={styles.textContainer}>ss</Text>
         </TouchableOpacity>
       ) : null}
     </View>
@@ -41,10 +41,19 @@ function renderAvatar() {
 
   return (
     <SafeAreaView style={styles.photoContainer}>
-      <Image style={styles.avatar} source={{ uri: avatar }} />
+      <Image
+        style={styles.avatar}
+        source={{ uri: avatar }}
+      />
       <View style={styles.locationRow}>
-        <Icon name="dot-single" type="entypo" color="#42f125" />
-        <Text style={styles.locationText}>{currentLocation}</Text>
+        <Icon
+          name="dot-single"
+          type="entypo"
+          color="#42f125"
+        />
+        <Text style={styles.locationText}>
+          {currentLocation}
+        </Text>
       </View>
     </SafeAreaView>
   )
@@ -58,13 +67,23 @@ function renderImage() {
       <ScrollView horizontal={true}>
         {pic.map((item, index) => {
           return (
-            <Image source={{ uri: item }} imgStyle={styles.image} key={index} />
+            <Image
+              source={{ uri: item }}
+              imgStyle={styles.image}
+              key={index}
+            />
           )
         })}
       </ScrollView>
       <View style={styles.locationRow}>
-        <Icon name="dot-single" type="entypo" color="#42f125" />
-        <Text style={styles.locationText}>{currentLocation}</Text>
+        <Icon
+          name="dot-single"
+          type="entypo"
+          color="#42f125"
+        />
+        <Text style={styles.locationText}>
+          {currentLocation}
+        </Text>
       </View>
     </View>
   )
@@ -110,7 +129,9 @@ export default function Details({ route, navigation }) {
 
   return (
     <ScrollView style={styles.scrollView}>
-      {includes(photoApproved, id) ? renderImage() : renderAvatar()}
+      {includes(photoApproved, id)
+        ? renderImage()
+        : renderAvatar()}
       {1 > 0 ? renderIconContainer(gender) : null}
       <View style={styles.badgeContainer}>
         <View style={styles.badgeRow}>
@@ -118,13 +139,19 @@ export default function Details({ route, navigation }) {
             <Text style={styles.badgeText}>{age}</Text>
           </View>
           <View style={styles.badge}>
-            <Text style={styles.badgeText}>{profession}</Text>
+            <Text style={styles.badgeText}>
+              {profession}
+            </Text>
           </View>
           <View style={styles.badge}>
-            <Text style={styles.badgeText}>{education}</Text>
+            <Text style={styles.badgeText}>
+              {education}
+            </Text>
           </View>
           <View style={styles.badge}>
-            <Text style={styles.badgeText}>{homeDistrict}</Text>
+            <Text style={styles.badgeText}>
+              {homeDistrict}
+            </Text>
           </View>
         </View>
 
@@ -133,7 +160,9 @@ export default function Details({ route, navigation }) {
             <Text style={styles.badgeText}>{beard}</Text>
           </View>
           <View style={styles.badge}>
-            <Text style={styles.badgeText}>{practisingSince}</Text>
+            <Text style={styles.badgeText}>
+              {practisingSince}
+            </Text>
           </View>
           <View style={styles.badge}>
             <Text style={styles.badgeText}>{height}</Text>
@@ -141,7 +170,9 @@ export default function Details({ route, navigation }) {
         </View>
         <View style={styles.badgeRow}>
           <View style={styles.badge}>
-            <Text style={styles.badgeText}>{hifzLevel}</Text>
+            <Text style={styles.badgeText}>
+              {hifzLevel}
+            </Text>
           </View>
           <View style={styles.badge}>
             <Text style={styles.badgeText}>{prayer}</Text>
@@ -239,7 +270,8 @@ const styles = StyleSheet.create({
   icon: {
     width: Platform.OS === 'ios' ? wp('19.4%') : wp('22%'),
     height: Platform.OS === 'ios' ? hp('10.5%') : hp('13%'),
-    marginHorizontal: Platform.OS === 'ios' ? wp('2.5%') : wp('1.5%')
+    marginHorizontal:
+      Platform.OS === 'ios' ? wp('2.5%') : wp('1.5%')
   },
   image: {
     width: wp('53%'),
