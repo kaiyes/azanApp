@@ -3,12 +3,10 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Icon } from 'react-native-elements'
 //Screens
-import ListScreen from './screens/List.screen'
-import DetailScreen from './screens/Details.screen'
+import TodayScreen from './screens/Today.screen'
+import MonthScreen from './screens/Month.screen'
 import SplashScreen from './screens/Splash.screen'
-import ChatScreen from './screens/Chat.screen'
-import PaymentScreen from './screens/Payment.screen'
-import MatchScreen from './screens/Match.screen'
+import SettingScreen from './screens/Settings.screen'
 
 //components
 import IconWithBadge from './components/ChatIcon'
@@ -23,35 +21,6 @@ function Splash() {
         name="Splash"
         component={SplashScreen}
       />
-    </Stack.Navigator>
-  )
-}
-
-function ListStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="List" component={ListScreen} />
-      <Stack.Screen
-        name="Details"
-        component={DetailScreen}
-      />
-    </Stack.Navigator>
-  )
-}
-
-function SignUpStack() {
-  return (
-    <Stack.Navigator headerMode="none">
-      <>
-        <Stack.Screen
-          name="SignUp"
-          component={SignUpScreen}
-        />
-        <Stack.Screen
-          name="LogIn"
-          component={LogInScreen}
-        />
-      </>
     </Stack.Navigator>
   )
 }
@@ -95,9 +64,12 @@ function LoggedInStack() {
         inactiveTintColor: 'darkgrey'
       }}
     >
-      <Tab.Screen name="Today" component={ListStack} />
-      <Tab.Screen name="Month" component={ChatScreen} />
-      <Tab.Screen name="Settings" component={MatchScreen} />
+      <Tab.Screen name="Today" component={TodayScreen} />
+      <Tab.Screen name="Month" component={MonthScreen} />
+      <Tab.Screen
+        name="Settings"
+        component={SettingScreen}
+      />
     </Tab.Navigator>
   )
 }
@@ -105,7 +77,6 @@ function LoggedInStack() {
 export default function Navigator({ navigation }) {
   const [isLoading, setIsLoading] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(true)
-  const [isInLimbo, setLimbo] = useState(false)
 
   return isLoading ? Splash() : LoggedInStack()
 }
