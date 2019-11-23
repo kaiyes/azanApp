@@ -64,14 +64,14 @@ function LoggedInStack() {
           let iconName
 
           switch (route.name) {
-            case 'List':
-              iconName = 'home'
+            case 'Today':
+              iconName = 'clockcircleo'
               break
-            case 'Chat':
-              iconName = 'chat'
+            case 'Month':
+              iconName = 'calendar'
               break
-            case 'Details':
-              iconName = 'credit'
+            case 'Settings':
+              iconName = 'setting'
               break
 
               break
@@ -82,7 +82,7 @@ function LoggedInStack() {
           return (
             <IconWithBadge
               name={iconName}
-              type={'entypo'}
+              type={'antdesign'}
               size={22}
               color={color}
               badgeCount={0}
@@ -95,9 +95,9 @@ function LoggedInStack() {
         inactiveTintColor: 'darkgrey'
       }}
     >
-      <Tab.Screen name="List" component={ListStack} />
-      <Tab.Screen name="Chat" component={ChatScreen} />
-      <Tab.Screen name="Details" component={MatchScreen} />
+      <Tab.Screen name="Today" component={ListStack} />
+      <Tab.Screen name="Month" component={ChatScreen} />
+      <Tab.Screen name="Settings" component={MatchScreen} />
     </Tab.Navigator>
   )
 }
