@@ -47,7 +47,7 @@ export default function Today({ navigation }) {
                 {new Intl.DateTimeFormat(
                   'en-TN-u-ca-islamic',
                   {
-                    day: 'numeric',
+                    day: '2-digit',
                     month: 'long',
                     year: 'numeric'
                   }
