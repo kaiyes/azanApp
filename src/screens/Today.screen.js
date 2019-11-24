@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   SafeAreaView,
   StyleSheet,
@@ -18,6 +18,8 @@ import { Icon } from 'react-native-elements'
 //utility
 
 export default function Today({ navigation }) {
+  const [icon, setIcon] = useState(true)
+
   return (
     <>
       <StatusBar barStyle="light-content" />
@@ -38,7 +40,7 @@ export default function Today({ navigation }) {
             </TouchableOpacity>
             <View style={styles.dateHolder}>
               <Text style={styles.englishDate}>
-                Dhaka, 24 November
+                Friday, 24 November
               </Text>
               <Text style={styles.arabicDate}>
                 12 Robiul Awwal
@@ -58,11 +60,31 @@ export default function Today({ navigation }) {
               <Text style={styles.salahTimeSmall}>
                 15:00
               </Text>
-              <Icon
-                name="bell"
-                type="antdesign"
-                containerStyle={styles.alarmIcon}
-              />
+              {icon ? (
+                <TouchableOpacity
+                  onPres={() => {
+                    setIcon(false)
+                  }}
+                >
+                  <Icon
+                    name="bell"
+                    type="feather"
+                    size={20}
+                  />
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  onPress={() => {
+                    setIcon(true)
+                  }}
+                >
+                  <Icon
+                    name="bell-off"
+                    type="feather"
+                    size={20}
+                  />
+                </TouchableOpacity>
+              )}
             </View>
           </View>
         </View>
@@ -132,10 +154,21 @@ const styles = StyleSheet.create({
   salahRow: {
     flexDirection: 'row',
     width: wp('100%'),
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    marginVertical: hp('5%')
   },
   alarmRow: {
     flexDirection: 'row',
-    marginRight: wp('5%')
+    marginRight: wp('6%'),
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  salahTimeSmall: {
+    marginRight: wp('4%'),
+    fontWeight: 'bold'
+  },
+  salahNameSmall: {
+    fontWeight: 'bold',
+    marginLeft: wp('6%')
   }
 })
