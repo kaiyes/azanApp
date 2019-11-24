@@ -15,6 +15,7 @@ import {
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
 import { Icon } from 'react-native-elements'
+import dayjs from 'dayjs'
 //utility
 
 export default function Today({ navigation }) {
@@ -40,10 +41,17 @@ export default function Today({ navigation }) {
             </TouchableOpacity>
             <View style={styles.dateHolder}>
               <Text style={styles.englishDate}>
-                Friday, 24 November
+                {dayjs().format('dddd, D MMM')}
               </Text>
               <Text style={styles.arabicDate}>
-                12 Robiul Awwal
+                {new Intl.DateTimeFormat(
+                  'en-TN-u-ca-islamic',
+                  {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                  }
+                ).format(Date.now())}
               </Text>
             </View>
             <TouchableOpacity>
@@ -55,7 +63,9 @@ export default function Today({ navigation }) {
             </TouchableOpacity>
           </View>
           <View style={styles.salahRow}>
-            <Text style={styles.salahNameSmall}>Fajr</Text>
+            <Text style={styles.salahNameSmall}>
+              Sunrise
+            </Text>
             <View style={styles.alarmRow}>
               <Text style={styles.salahTimeSmall}>
                 15:00
@@ -121,7 +131,7 @@ export default function Today({ navigation }) {
             </View>
           </View>
           <View style={styles.salahRow}>
-            <Text style={styles.salahNameSmall}>Fajr</Text>
+            <Text style={styles.salahNameSmall}>Dhuhr</Text>
             <View style={styles.alarmRow}>
               <Text style={styles.salahTimeSmall}>
                 15:00
@@ -154,7 +164,7 @@ export default function Today({ navigation }) {
             </View>
           </View>
           <View style={styles.salahRow}>
-            <Text style={styles.salahNameSmall}>Fajr</Text>
+            <Text style={styles.salahNameSmall}>Asr</Text>
             <View style={styles.alarmRow}>
               <Text style={styles.salahTimeSmall}>
                 15:00
@@ -187,7 +197,9 @@ export default function Today({ navigation }) {
             </View>
           </View>
           <View style={styles.salahRow}>
-            <Text style={styles.salahNameSmall}>Fajr</Text>
+            <Text style={styles.salahNameSmall}>
+              Magrib
+            </Text>
             <View style={styles.alarmRow}>
               <Text style={styles.salahTimeSmall}>
                 15:00
@@ -220,7 +232,7 @@ export default function Today({ navigation }) {
             </View>
           </View>
           <View style={styles.salahRow}>
-            <Text style={styles.salahNameSmall}>Fajr</Text>
+            <Text style={styles.salahNameSmall}>Isha</Text>
             <View style={styles.alarmRow}>
               <Text style={styles.salahTimeSmall}>
                 15:00
