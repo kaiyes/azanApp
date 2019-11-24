@@ -17,7 +17,14 @@ export default function Month({ navigation }) {
     <>
       <StatusBar barStyle="light-content" />
       <SafeAreaView style={styles.container}>
-        <Text style={styles.textContainer}>Month</Text>
+        <View style={styles.topCard}>
+          <Text style={styles.salahName}>asr</Text>
+        </View>
+        <View style={styles.bottomCard}>
+          <Text style={styles.textContainer}>
+            Fajr : 5.45 AM
+          </Text>
+        </View>
       </SafeAreaView>
     </>
   )
@@ -28,13 +35,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff'
   },
-  card: {
-    // backgroundColor: '#E3D5FC',
+  topCard: {
+    backgroundColor: 'limegreen',
     flexDirection: 'row',
-    alignItems: 'center',
-    marginLeft: 12,
-    marginRight: 12,
-    marginBottom: 5,
-    marginTop: 5
+    alignItems: 'center'
   }
 })
