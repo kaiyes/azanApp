@@ -18,7 +18,7 @@ import { Icon } from 'react-native-elements'
 //utility
 
 export default function Today({ navigation }) {
-  const [icon, setIcon] = useState(true)
+  const [icon, setIcon] = useState(false)
 
   return (
     <>
@@ -62,7 +62,172 @@ export default function Today({ navigation }) {
               </Text>
               {icon ? (
                 <TouchableOpacity
-                  onPres={() => {
+                  onPress={() => {
+                    setIcon(false)
+                  }}
+                >
+                  <Icon
+                    name="bell"
+                    type="feather"
+                    size={20}
+                  />
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  onPress={() => {
+                    setIcon(true)
+                  }}
+                >
+                  <Icon
+                    name="bell-off"
+                    type="feather"
+                    size={20}
+                  />
+                </TouchableOpacity>
+              )}
+            </View>
+          </View>
+          <View style={styles.salahRow}>
+            <Text style={styles.salahNameSmall}>Fajr</Text>
+            <View style={styles.alarmRow}>
+              <Text style={styles.salahTimeSmall}>
+                15:00
+              </Text>
+              {icon ? (
+                <TouchableOpacity
+                  onPress={() => {
+                    setIcon(false)
+                  }}
+                >
+                  <Icon
+                    name="bell"
+                    type="feather"
+                    size={20}
+                  />
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  onPress={() => {
+                    setIcon(true)
+                  }}
+                >
+                  <Icon
+                    name="bell-off"
+                    type="feather"
+                    size={20}
+                  />
+                </TouchableOpacity>
+              )}
+            </View>
+          </View>
+          <View style={styles.salahRow}>
+            <Text style={styles.salahNameSmall}>Fajr</Text>
+            <View style={styles.alarmRow}>
+              <Text style={styles.salahTimeSmall}>
+                15:00
+              </Text>
+              {icon ? (
+                <TouchableOpacity
+                  onPress={() => {
+                    setIcon(false)
+                  }}
+                >
+                  <Icon
+                    name="bell"
+                    type="feather"
+                    size={20}
+                  />
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  onPress={() => {
+                    setIcon(true)
+                  }}
+                >
+                  <Icon
+                    name="bell-off"
+                    type="feather"
+                    size={20}
+                  />
+                </TouchableOpacity>
+              )}
+            </View>
+          </View>
+          <View style={styles.salahRow}>
+            <Text style={styles.salahNameSmall}>Fajr</Text>
+            <View style={styles.alarmRow}>
+              <Text style={styles.salahTimeSmall}>
+                15:00
+              </Text>
+              {icon ? (
+                <TouchableOpacity
+                  onPress={() => {
+                    setIcon(false)
+                  }}
+                >
+                  <Icon
+                    name="bell"
+                    type="feather"
+                    size={20}
+                  />
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  onPress={() => {
+                    setIcon(true)
+                  }}
+                >
+                  <Icon
+                    name="bell-off"
+                    type="feather"
+                    size={20}
+                  />
+                </TouchableOpacity>
+              )}
+            </View>
+          </View>
+          <View style={styles.salahRow}>
+            <Text style={styles.salahNameSmall}>Fajr</Text>
+            <View style={styles.alarmRow}>
+              <Text style={styles.salahTimeSmall}>
+                15:00
+              </Text>
+              {icon ? (
+                <TouchableOpacity
+                  onPress={() => {
+                    setIcon(false)
+                  }}
+                >
+                  <Icon
+                    name="bell"
+                    type="feather"
+                    size={20}
+                  />
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  onPress={() => {
+                    setIcon(true)
+                  }}
+                >
+                  <Icon
+                    name="bell-off"
+                    type="feather"
+                    size={20}
+                  />
+                </TouchableOpacity>
+              )}
+            </View>
+          </View>
+          <View style={styles.salahRow}>
+            <Text style={styles.salahNameSmall}>Fajr</Text>
+            <View style={styles.alarmRow}>
+              <Text style={styles.salahTimeSmall}>
+                15:00
+              </Text>
+              {icon ? (
+                <TouchableOpacity
+                  onPress={() => {
                     setIcon(false)
                   }}
                 >
@@ -102,7 +267,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'seagreen',
     justifyContent: 'center',
     alignItems: 'center',
-    height: hp('40%')
+    height: hp('43%')
   },
   bottomCard: {
     flex: 1,
@@ -114,15 +279,16 @@ const styles = StyleSheet.create({
   salahName: {
     fontSize: hp('3%'),
     color: 'white',
-    fontWeight: '300'
-  },
-  salahTime: {
-    fontSize: hp('5%'),
-    color: 'white',
     fontWeight: '400'
   },
+  salahTime: {
+    fontSize: hp('7%'),
+    color: 'white',
+    fontWeight: '300',
+    marginVertical: hp('1%')
+  },
   timeLeft: {
-    fontSize: hp('2%'),
+    fontSize: hp('2.3%'),
     color: 'white'
   },
   topRow: {
@@ -134,7 +300,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: wp('5%'),
     borderTopRightRadius: wp('5%'),
     borderBottomWidth: wp('.1%'),
-    borderBottomColor: 'darkgrey'
+    borderBottomColor: 'darkgrey',
+    marginBottom: hp('1%')
   },
   directionHorizontal: {
     marginHorizontal: wp('4%')
@@ -155,7 +322,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: wp('100%'),
     justifyContent: 'space-between',
-    marginVertical: hp('5%')
+    marginVertical: hp('2%')
   },
   alarmRow: {
     flexDirection: 'row',
@@ -165,10 +332,12 @@ const styles = StyleSheet.create({
   },
   salahTimeSmall: {
     marginRight: wp('4%'),
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: wp('3.4%')
   },
   salahNameSmall: {
     fontWeight: 'bold',
-    marginLeft: wp('6%')
+    marginLeft: wp('6%'),
+    fontSize: wp('3.4%')
   }
 })
