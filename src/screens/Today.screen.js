@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   SafeAreaView,
   StyleSheet,
@@ -18,8 +18,45 @@ import { Icon } from 'react-native-elements'
 import dayjs from 'dayjs'
 //utility
 
+// setFajr(Fajr)
+// setDhuhr(Dhuhr)
+// setAsr(Asr)
+// setMagrib(Maghrib)
+// setIsha(Isha)
+// setSunrise(Sunrise)
+// return null
+//
+// let {
+//   Fajr,
+//   Dhuhr,
+//   Isha,
+//   Asr,
+//   Maghrib,
+//   Sunrise
+// } = await getTime()
+
+// const [dhuhr, setDhuhr] = useState('')
+// const [magrib, setMagrib] = useState('')
+// const [isha, setIsha] = useState('')
+// const [asr, setAsr] = useState('')
+// const [sunrise, setSunrise] = useState('')
+
 export default function Today({ navigation }) {
   const [icon, setIcon] = useState(false)
+  const [time, setTime] = useState('')
+
+  async function getTime() {
+    let res = await fetch(
+      'https://api.pray.zone/v2/times/today.json?city=dhaka'
+    )
+    let parsed = await res.json()
+    let time = await parsed.results.datetime[0].times
+    setTime(time)
+  }
+
+  useEffect(() => {
+    getTime()
+  }, [])
 
   return (
     <>
@@ -63,12 +100,10 @@ export default function Today({ navigation }) {
             </TouchableOpacity>
           </View>
           <View style={styles.salahRow}>
-            <Text style={styles.salahNameSmall}>
-              Sunrise
-            </Text>
+            <Text style={styles.salahNameSmall}>Fajr</Text>
             <View style={styles.alarmRow}>
               <Text style={styles.salahTimeSmall}>
-                15:00
+                {time.Fajr}
               </Text>
               {icon ? (
                 <TouchableOpacity
@@ -98,10 +133,12 @@ export default function Today({ navigation }) {
             </View>
           </View>
           <View style={styles.salahRow}>
-            <Text style={styles.salahNameSmall}>Fajr</Text>
+            <Text style={styles.salahNameSmall}>
+              Sunrise
+            </Text>
             <View style={styles.alarmRow}>
               <Text style={styles.salahTimeSmall}>
-                15:00
+                {time.Sunrise}
               </Text>
               {icon ? (
                 <TouchableOpacity
@@ -134,7 +171,7 @@ export default function Today({ navigation }) {
             <Text style={styles.salahNameSmall}>Dhuhr</Text>
             <View style={styles.alarmRow}>
               <Text style={styles.salahTimeSmall}>
-                15:00
+                {time.Dhuhr}
               </Text>
               {icon ? (
                 <TouchableOpacity
@@ -167,7 +204,7 @@ export default function Today({ navigation }) {
             <Text style={styles.salahNameSmall}>Asr</Text>
             <View style={styles.alarmRow}>
               <Text style={styles.salahTimeSmall}>
-                15:00
+                {time.Asr}
               </Text>
               {icon ? (
                 <TouchableOpacity
@@ -202,7 +239,7 @@ export default function Today({ navigation }) {
             </Text>
             <View style={styles.alarmRow}>
               <Text style={styles.salahTimeSmall}>
-                15:00
+                {time.Maghrib}
               </Text>
               {icon ? (
                 <TouchableOpacity
@@ -235,7 +272,7 @@ export default function Today({ navigation }) {
             <Text style={styles.salahNameSmall}>Isha</Text>
             <View style={styles.alarmRow}>
               <Text style={styles.salahTimeSmall}>
-                15:00
+                {time.Isha}
               </Text>
               {icon ? (
                 <TouchableOpacity
