@@ -44,7 +44,6 @@ export default function Today({ navigation }) {
                 12 Robiul Awwal
               </Text>
             </View>
-
             <TouchableOpacity>
               <Icon
                 name="right"
@@ -52,6 +51,19 @@ export default function Today({ navigation }) {
                 containerStyle={styles.directionHorizontal}
               />
             </TouchableOpacity>
+          </View>
+          <View style={styles.salahRow}>
+            <Text style={styles.salahNameSmall}>Fajr</Text>
+            <View style={styles.alarmRow}>
+              <Text style={styles.salahTimeSmall}>
+                15:00
+              </Text>
+              <Icon
+                name="bell"
+                type="antdesign"
+                containerStyle={styles.alarmIcon}
+              />
+            </View>
           </View>
         </View>
       </View>
@@ -85,7 +97,7 @@ const styles = StyleSheet.create({
   salahTime: {
     fontSize: hp('5%'),
     color: 'white',
-    fontWeight: '200'
+    fontWeight: '400'
   },
   timeLeft: {
     fontSize: hp('2%'),
@@ -103,7 +115,7 @@ const styles = StyleSheet.create({
     borderBottomColor: 'darkgrey'
   },
   directionHorizontal: {
-    marginHorizontal: wp('2%')
+    marginHorizontal: wp('4%')
   },
   dateHolder: {
     justifyContent: 'center',
@@ -116,5 +128,14 @@ const styles = StyleSheet.create({
     color: 'dimgray',
     marginTop: hp('.2%'),
     fontWeight: '500'
+  },
+  salahRow: {
+    flexDirection: 'row',
+    width: wp('100%'),
+    justifyContent: 'space-between'
+  },
+  alarmRow: {
+    flexDirection: 'row',
+    marginRight: wp('5%')
   }
 })
