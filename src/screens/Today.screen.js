@@ -38,28 +38,25 @@ export default function Today({ navigation }) {
     await setTime(SalahTime[index])
   }
 
-  async function nextDay() {
-    let presentIndex = index
-    await setIndex(presentIndex + 1)
-    await setTime(SalahTime[presentIndex + 1])
-    console.log(index, time)
-  }
-  async function previousDay() {
-    let month = (await dayjs().month()) + 1
-    let date = await dayjs().date()
-    let todaysTimeIndex = await findIndex(
-      SalahTime,
-      item => {
-        return item[0] == month && item[1] == date
-      }
-    )
-    await setIndex(todaysTimeIndex - 1)
-    await setTime(SalahTime[index - 1])
-    console.log(index, time)
+  function wakt() {
+    let today = new Date()
+    let asr = `${today.getFullYear()}-${today.getMonth() +
+      1}-${today.getDate()} ${time[6]}`
+    let asrr =
+      today.getFullYear() +
+      '-' +
+      today.getMonth() +
+      '-' +
+      today.getDate() +
+      ' ' +
+      time[6]
+
+    console.log(new Date(asrr))
   }
 
   useEffect(() => {
     getTime()
+    wakt()
   })
 
   return (
@@ -67,8 +64,8 @@ export default function Today({ navigation }) {
       <StatusBar barStyle="light-content" />
       <View style={styles.container}>
         <View style={styles.topCard}>
-          <Text style={styles.salahName}>Asr</Text>
-          <Text style={styles.salahTime}>6.45 AM</Text>
+          <Text style={styles.salahName}>Dhuhr</Text>
+          <Text style={styles.salahTime}>12:43</Text>
           <Text style={styles.timeLeft}> time to Asr </Text>
         </View>
         <View style={styles.bottomCard}>
@@ -231,3 +228,23 @@ const styles = StyleSheet.create({
     fontSize: wp('3.4%')
   }
 })
+
+//
+// switch (dayjs().hour()) {
+//   case parseInt(time[2].split(':')[0]) < dayjs().hour():
+//     return ('fajr')
+//     break
+//   case parseInt(time[4].split(':')[0]) > dayjs().hour():
+//     setSalah(['Dhuhr', time[3]])
+//     break
+//   case parseInt(time[5].split(':')[0]) < dayjs().hour():
+//     setSalah(['Dhuhr', time[5]])
+//     break
+//   case parseInt(time[6].split(':')[0]) < dayjs().hour():
+//     setSalah(['Dhuhr', time[6]])
+//     break
+//   case parseInt(time[7].split(':')[0]) < dayjs().hour():
+//     setSalah(['Dhuhr', time[7]])
+//     break
+//   default:
+// }
