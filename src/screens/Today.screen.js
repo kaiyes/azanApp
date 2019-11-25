@@ -16,6 +16,8 @@ import {
 } from 'react-native-responsive-screen'
 import { Icon } from 'react-native-elements'
 import dayjs from 'dayjs'
+import { toDate } from 'date-fns'
+
 import { findIndex } from 'lodash'
 //utility
 import SalahTime from '../utility/helsingborg'
@@ -38,26 +40,38 @@ export default function Today({ navigation }) {
     await setTime(SalahTime[index])
   }
 
-  function wakt() {
+  function wakt(x, y) {
     let today = new Date()
-    let asr = `${today.getFullYear()}-${today.getMonth() +
-      1}-${today.getDate()} ${time[6]}`
-    let asrr =
-      today.getFullYear() +
-      '-' +
-      today.getMonth() +
-      '-' +
-      today.getDate() +
-      ' ' +
-      time[6]
+    const salahTime = toDate(
+      new Date(
+        today.getFullYear(),
+        today.getMonth() + 1,
+        today.getDate(),
+        x,
+        y
+      )
+    )
+    let diff = salahTime - today
+    return diff
+  }
 
-    console.log(new Date(asrr))
+  function whichWakt() {
+    let salahTimes = time
+      .splice(2)
+      .map(item => item.split(':'))
+    console.log(salahTimes)
+    let ans = salahTimes.map(item => wakt(item[0], item[1]))
+    let closestWakt = ans.reduce((acc, val) =>
+      acc > val ? acc : val
+    )
+    console.log(closestWakt)
+    return closestWakt
   }
 
   useEffect(() => {
     getTime()
-    wakt()
-  })
+    whichWakt()
+  }, [index])
 
   return (
     <>
