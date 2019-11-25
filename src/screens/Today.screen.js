@@ -22,8 +22,8 @@ import SalahTime from '../utility/helsingborg'
 
 export default function Today({ navigation }) {
   const [icon, setIcon] = useState(false)
-  const [time, setTime] = useState('')
-  const [index, setIndex] = useState(1)
+  const [time, setTime] = useState([])
+  const [index, setIndex] = useState(0)
 
   async function getTime() {
     let month = (await dayjs().month()) + 1
@@ -39,16 +39,9 @@ export default function Today({ navigation }) {
   }
 
   async function nextDay() {
-    let month = (await dayjs().month()) + 1
-    let date = await dayjs().date()
-    let todaysTimeIndex = await findIndex(
-      SalahTime,
-      item => {
-        return item[0] == month && item[1] == date
-      }
-    )
-    await setIndex(todaysTimeIndex + 1)
-    await setTime(SalahTime[index + 1])
+    let presentIndex = index
+    await setIndex(presentIndex + 1)
+    await setTime(SalahTime[presentIndex + 1])
     console.log(index, time)
   }
   async function previousDay() {
@@ -67,7 +60,7 @@ export default function Today({ navigation }) {
 
   useEffect(() => {
     getTime()
-  }, [])
+  })
 
   return (
     <>
@@ -80,17 +73,6 @@ export default function Today({ navigation }) {
         </View>
         <View style={styles.bottomCard}>
           <View style={styles.topRow}>
-            <TouchableOpacity
-              onPress={() => {
-                previousDay()
-              }}
-            >
-              <Icon
-                name="left"
-                type="antdesign"
-                containerStyle={styles.directionHorizontal}
-              />
-            </TouchableOpacity>
             <View style={styles.dateHolder}>
               <Text style={styles.englishDate}>
                 {dayjs().format('dddd, D MMM')}
@@ -106,17 +88,6 @@ export default function Today({ navigation }) {
                 ).format(Date.now())}
               </Text>
             </View>
-            <TouchableOpacity
-              onPress={() => {
-                nextDay()
-              }}
-            >
-              <Icon
-                name="right"
-                type="antdesign"
-                containerStyle={styles.directionHorizontal}
-              />
-            </TouchableOpacity>
           </View>
           <View style={styles.salahRow}>
             <Text style={styles.salahNameSmall}>Fajr</Text>
@@ -124,31 +95,6 @@ export default function Today({ navigation }) {
               <Text style={styles.salahTimeSmall}>
                 {time[2]}
               </Text>
-              {icon ? (
-                <TouchableOpacity
-                  onPress={() => {
-                    setIcon(false)
-                  }}
-                >
-                  <Icon
-                    name="bell"
-                    type="feather"
-                    size={20}
-                  />
-                </TouchableOpacity>
-              ) : (
-                <TouchableOpacity
-                  onPress={() => {
-                    setIcon(true)
-                  }}
-                >
-                  <Icon
-                    name="bell-off"
-                    type="feather"
-                    size={20}
-                  />
-                </TouchableOpacity>
-              )}
             </View>
           </View>
           <View style={styles.salahRow}>
@@ -159,31 +105,6 @@ export default function Today({ navigation }) {
               <Text style={styles.salahTimeSmall}>
                 {time[3]}
               </Text>
-              {icon ? (
-                <TouchableOpacity
-                  onPress={() => {
-                    setIcon(false)
-                  }}
-                >
-                  <Icon
-                    name="bell"
-                    type="feather"
-                    size={20}
-                  />
-                </TouchableOpacity>
-              ) : (
-                <TouchableOpacity
-                  onPress={() => {
-                    setIcon(true)
-                  }}
-                >
-                  <Icon
-                    name="bell-off"
-                    type="feather"
-                    size={20}
-                  />
-                </TouchableOpacity>
-              )}
             </View>
           </View>
           <View style={styles.salahRow}>
@@ -192,31 +113,6 @@ export default function Today({ navigation }) {
               <Text style={styles.salahTimeSmall}>
                 {time[4]}
               </Text>
-              {icon ? (
-                <TouchableOpacity
-                  onPress={() => {
-                    setIcon(false)
-                  }}
-                >
-                  <Icon
-                    name="bell"
-                    type="feather"
-                    size={20}
-                  />
-                </TouchableOpacity>
-              ) : (
-                <TouchableOpacity
-                  onPress={() => {
-                    setIcon(true)
-                  }}
-                >
-                  <Icon
-                    name="bell-off"
-                    type="feather"
-                    size={20}
-                  />
-                </TouchableOpacity>
-              )}
             </View>
           </View>
           <View style={styles.salahRow}>
@@ -225,31 +121,6 @@ export default function Today({ navigation }) {
               <Text style={styles.salahTimeSmall}>
                 {time[5]}
               </Text>
-              {icon ? (
-                <TouchableOpacity
-                  onPress={() => {
-                    setIcon(false)
-                  }}
-                >
-                  <Icon
-                    name="bell"
-                    type="feather"
-                    size={20}
-                  />
-                </TouchableOpacity>
-              ) : (
-                <TouchableOpacity
-                  onPress={() => {
-                    setIcon(true)
-                  }}
-                >
-                  <Icon
-                    name="bell-off"
-                    type="feather"
-                    size={20}
-                  />
-                </TouchableOpacity>
-              )}
             </View>
           </View>
           <View style={styles.salahRow}>
@@ -260,31 +131,6 @@ export default function Today({ navigation }) {
               <Text style={styles.salahTimeSmall}>
                 {time[6]}
               </Text>
-              {icon ? (
-                <TouchableOpacity
-                  onPress={() => {
-                    setIcon(false)
-                  }}
-                >
-                  <Icon
-                    name="bell"
-                    type="feather"
-                    size={20}
-                  />
-                </TouchableOpacity>
-              ) : (
-                <TouchableOpacity
-                  onPress={() => {
-                    setIcon(true)
-                  }}
-                >
-                  <Icon
-                    name="bell-off"
-                    type="feather"
-                    size={20}
-                  />
-                </TouchableOpacity>
-              )}
             </View>
           </View>
           <View style={styles.salahRow}>
@@ -293,31 +139,6 @@ export default function Today({ navigation }) {
               <Text style={styles.salahTimeSmall}>
                 {time[7]}
               </Text>
-              {icon ? (
-                <TouchableOpacity
-                  onPress={() => {
-                    setIcon(false)
-                  }}
-                >
-                  <Icon
-                    name="bell"
-                    type="feather"
-                    size={20}
-                  />
-                </TouchableOpacity>
-              ) : (
-                <TouchableOpacity
-                  onPress={() => {
-                    setIcon(true)
-                  }}
-                >
-                  <Icon
-                    name="bell-off"
-                    type="feather"
-                    size={20}
-                  />
-                </TouchableOpacity>
-              )}
             </View>
           </View>
         </View>
@@ -363,7 +184,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: hp('7%'),
     width: wp('100%'),
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     borderTopLeftRadius: wp('5%'),
     borderTopRightRadius: wp('5%'),
@@ -396,7 +217,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginRight: wp('6%'),
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginLeft: wp('6%')
   },
   salahTimeSmall: {
     marginRight: wp('4%'),
