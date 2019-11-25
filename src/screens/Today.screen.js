@@ -16,21 +16,53 @@ import {
 } from 'react-native-responsive-screen'
 import { Icon } from 'react-native-elements'
 import dayjs from 'dayjs'
+import { findIndex } from 'lodash'
 //utility
 import SalahTime from '../utility/helsingborg'
 
 export default function Today({ navigation }) {
   const [icon, setIcon] = useState(false)
   const [time, setTime] = useState('')
+  const [index, setIndex] = useState(1)
 
-  function getTime() {
-    let month = dayjs().month() + 1
-    let date = dayjs().date()
-    let todaysTime = SalahTime.filter(
-      item => item[0] == month
-    ).find(item => item[1] == date)
-    console.log(todaysTime)
-    setTime(todaysTime)
+  async function getTime() {
+    let month = (await dayjs().month()) + 1
+    let date = await dayjs().date()
+    let todaysTimeIndex = await findIndex(
+      SalahTime,
+      item => {
+        return item[0] == month && item[1] == date
+      }
+    )
+    await setIndex(todaysTimeIndex)
+    await setTime(SalahTime[index])
+  }
+
+  async function nextDay() {
+    let month = (await dayjs().month()) + 1
+    let date = await dayjs().date()
+    let todaysTimeIndex = await findIndex(
+      SalahTime,
+      item => {
+        return item[0] == month && item[1] == date
+      }
+    )
+    await setIndex(todaysTimeIndex + 1)
+    await setTime(SalahTime[index + 1])
+    console.log(index, time)
+  }
+  async function previousDay() {
+    let month = (await dayjs().month()) + 1
+    let date = await dayjs().date()
+    let todaysTimeIndex = await findIndex(
+      SalahTime,
+      item => {
+        return item[0] == month && item[1] == date
+      }
+    )
+    await setIndex(todaysTimeIndex - 1)
+    await setTime(SalahTime[index - 1])
+    console.log(index, time)
   }
 
   useEffect(() => {
@@ -48,7 +80,11 @@ export default function Today({ navigation }) {
         </View>
         <View style={styles.bottomCard}>
           <View style={styles.topRow}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                previousDay()
+              }}
+            >
               <Icon
                 name="left"
                 type="antdesign"
@@ -70,7 +106,11 @@ export default function Today({ navigation }) {
                 ).format(Date.now())}
               </Text>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                nextDay()
+              }}
+            >
               <Icon
                 name="right"
                 type="antdesign"
