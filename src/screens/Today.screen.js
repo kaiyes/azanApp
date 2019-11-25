@@ -65,7 +65,7 @@ export default function Today({ navigation }) {
         <View style={styles.topCard}>
           <Text style={styles.salahName}>Asr</Text>
           <Text style={styles.salahTime}>6.45 AM</Text>
-          <Text style={styles.timeLeft}>- 00.05.16</Text>
+          <Text style={styles.timeLeft}> time to Asr </Text>
         </View>
         <View style={styles.bottomCard}>
           <View style={styles.topRow}>
