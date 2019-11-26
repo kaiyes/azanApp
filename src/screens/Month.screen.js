@@ -91,12 +91,24 @@ export default function Month({ navigation }) {
                 <Text style={styles.month}>
                   {item[1]} {month}
                 </Text>
-                <Text style={styles.salahTime}>5: 43</Text>
-                <Text style={styles.salahTime}>5: 43</Text>
-                <Text style={styles.salahTime}>5: 43</Text>
-                <Text style={styles.salahTime}>5: 43</Text>
-                <Text style={styles.salahTime}>5: 43</Text>
-                <Text style={styles.salahTime}>5: 43</Text>
+                <Text style={styles.salahTime}>
+                  {item[2]}
+                </Text>
+                <Text style={styles.salahTime}>
+                  {item[3]}
+                </Text>
+                <Text style={styles.salahTime}>
+                  {item[4]}
+                </Text>
+                <Text style={styles.salahTime}>
+                  {item[5]}
+                </Text>
+                <Text style={styles.salahTime}>
+                  {item[6]}
+                </Text>
+                <Text style={styles.salahTime}>
+                  {item[7]}
+                </Text>
               </View>
             ))
           )}
@@ -120,7 +132,7 @@ const styles = StyleSheet.create({
   salahNameRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginLeft: wp('16.5%'),
+    marginLeft: wp('16%'),
     marginTop: hp('1.1%'),
     marginRight: wp('2%')
   },
@@ -139,7 +151,9 @@ const styles = StyleSheet.create({
   },
   salahTime: {
     fontSize: 14,
-    fontWeight: '400'
+    fontWeight: '400',
+    width: wp('12%'),
+    textAlign: 'center'
   },
   waitText: {
     fontSize: 33,
@@ -148,6 +162,7 @@ const styles = StyleSheet.create({
   month: {
     fontSize: 14,
     fontWeight: '700',
-    color: 'dimgray'
+    color: 'dimgray',
+    width: wp('12%')
   }
 })
