@@ -27,26 +27,6 @@ import { findIndex } from 'lodash'
 //utility
 import SalahTime from '../utility/helsingborg'
 
-function useInterval(callback, delay) {
-  const savedCallback = useRef()
-
-  // Remember the latest callback.
-  useEffect(() => {
-    savedCallback.current = callback
-  }, [callback])
-
-  // Set up the interval.
-  useEffect(() => {
-    function tick() {
-      savedCallback.current()
-    }
-    if (delay !== null) {
-      let id = setInterval(tick, delay)
-      return () => clearInterval(id)
-    }
-  }, [delay])
-}
-
 export default function Today({ navigation }) {
   const [icon, setIcon] = useState(false)
   const [time, setTime] = useState([])
@@ -64,10 +44,6 @@ export default function Today({ navigation }) {
     await setIndex(todaysTimeIndex)
     await setTime(SalahTime[index])
   }
-
-  useInterval(() => {
-    return getHour()
-  }, 1000)
 
   function getHour() {
     return `${dayjs().hour()}: ${dayjs().minute()}`
@@ -245,23 +221,3 @@ const styles = StyleSheet.create({
     fontSize: wp('3.4%')
   }
 })
-
-//
-// switch (dayjs().hour()) {
-//   case parseInt(time[2].split(':')[0]) < dayjs().hour():
-//     return ('fajr')
-//     break
-//   case parseInt(time[4].split(':')[0]) > dayjs().hour():
-//     setSalah(['Dhuhr', time[3]])
-//     break
-//   case parseInt(time[5].split(':')[0]) < dayjs().hour():
-//     setSalah(['Dhuhr', time[5]])
-//     break
-//   case parseInt(time[6].split(':')[0]) < dayjs().hour():
-//     setSalah(['Dhuhr', time[6]])
-//     break
-//   case parseInt(time[7].split(':')[0]) < dayjs().hour():
-//     setSalah(['Dhuhr', time[7]])
-//     break
-//   default:
-// }

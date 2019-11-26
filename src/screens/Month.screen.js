@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,10 +14,14 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
-
+import useInterval from '@use-it/interval'
 //utility
+import Time from '../utility/helsingborg'
 
 export default function Month({ navigation }) {
+  const [dates, setDates] = useState([])
+  const [month, setMonth] = useState('')
+
   const salahNames = [
     'Fajr',
     'Sunrise',
@@ -26,7 +30,23 @@ export default function Month({ navigation }) {
     'Maghrib',
     'Isha'
   ]
-  const dates = new Array(30).fill('1st May')
+
+  async function getDate() {
+    let today = new Date()
+    let currentMonth = today.getMonth() + 1
+    let monthName = today.toLocaleString('default', {
+      month: 'short'
+    })
+    setMonth(monthName)
+    let time = await Time.filter(item => {
+      return item[0] == currentMonth
+    })
+    await setDates(time)
+  }
+
+  useEffect(() => {
+    getDate()
+  }, [])
 
   return (
     <>
@@ -41,17 +61,28 @@ export default function Month({ navigation }) {
               <Text style={styles.salahName}>{name}</Text>
             ))}
           </View>
-          {dates.map(() => (
-            <View style={styles.salahTimeRow}>
-              <Text style={styles.salahName}>01 May</Text>
-              <Text style={styles.salahTime}>5: 43</Text>
-              <Text style={styles.salahTime}>5: 43</Text>
-              <Text style={styles.salahTime}>5: 43</Text>
-              <Text style={styles.salahTime}>5: 43</Text>
-              <Text style={styles.salahTime}>5: 43</Text>
-              <Text style={styles.salahTime}>5: 43</Text>
-            </View>
-          ))}
+          {dates === [] ? (
+            <Text style={styles.waitText}>
+              please wait a bit while we load the dates
+            </Text>
+          ) : (
+            dates.map(item => (
+              <View
+                style={styles.salahTimeRow}
+                key={item[1]}
+              >
+                <Text style={styles.salahName}>
+                  {item[1]} {month}
+                </Text>
+                <Text style={styles.salahTime}>5: 43</Text>
+                <Text style={styles.salahTime}>5: 43</Text>
+                <Text style={styles.salahTime}>5: 43</Text>
+                <Text style={styles.salahTime}>5: 43</Text>
+                <Text style={styles.salahTime}>5: 43</Text>
+                <Text style={styles.salahTime}>5: 43</Text>
+              </View>
+            ))
+          )}
         </ScrollView>
       </SafeAreaView>
     </>
@@ -82,7 +113,6 @@ const styles = StyleSheet.create({
   },
   salahTimeRow: {
     flexDirection: 'row',
-
     justifyContent: 'space-around',
     marginTop: hp('1.2%'),
     marginRight: wp('1.2%')
@@ -90,5 +120,9 @@ const styles = StyleSheet.create({
   salahTime: {
     fontSize: 14,
     fontWeight: '400'
+  },
+  waitText: {
+    fontSize: 33,
+    fontWeight: '600'
   }
 })
