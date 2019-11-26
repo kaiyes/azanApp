@@ -14,12 +14,16 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
+import { Icon } from 'react-native-elements'
 //utility
 import Time from '../utility/helsingborg'
+import Months from '../utility/months'
 
 export default function Month({ navigation }) {
   const [dates, setDates] = useState([])
-  const [month, setMonth] = useState('')
+  const [monthShort, setMonthShort] = useState('')
+  const [monthLong, setMonthLong] = useState('')
+  const [index, setIndex] = useState(1)
 
   const salahNames = [
     'Fajr',
@@ -36,17 +40,52 @@ export default function Month({ navigation }) {
     let monthName = today.toLocaleString('default', {
       month: 'short'
     })
-    setMonth(monthName)
+    let monthNameLong = today.toLocaleString('default', {
+      month: 'long'
+    })
+
+    setMonthShort(monthName)
+    setMonthLong(monthNameLong)
+
     let time = await Time.filter(item => {
       return item[0] == currentMonth
     })
     await setDates(time)
   }
 
-  function whichStyle() {
-    return dates[1] == new Date().getDate()
-      ? 'styles.salahTimeRow'
-      : `[styles.salahTimeRow, { backgroundColor: 'lightgray' }]`
+  function nextMonth() {
+    console.log('indexBefore:', index)
+    if (index === 13) {
+      setIndex(1)
+    } else {
+      setIndex(index + 1)
+    }
+    console.log('indexAfter:', index)
+    let month = Months.find(item => item.number == index)
+    setMonthShort(month.short)
+    setMonthLong(month.long)
+
+    let time = Time.filter(item => {
+      return item[0] == index
+    })
+    setDates(time)
+  }
+
+  async function previousMonth() {
+    console.log('indexBefore:', index)
+    if (index === 0) {
+      await setIndex(12)
+    } else {
+      await setIndex(index - 1)
+    }
+    console.log('indexAfter:', index)
+    let month = Months.find(item => item.number == index)
+    setMonthShort(month.short)
+    setMonthLong(month.long)
+    let time = Time.filter(item => {
+      return item[0] == index
+    })
+    setDates(time)
   }
 
   useEffect(() => {
@@ -57,9 +96,31 @@ export default function Month({ navigation }) {
     <>
       <StatusBar barStyle="light-content" />
       <SafeAreaView style={styles.container}>
-        <Text style={styles.headline}>
-          Monthly Schedule
-        </Text>
+        <View style={styles.header}>
+          <TouchableOpacity
+            onPress={() => {
+              previousMonth()
+            }}
+          >
+            <Icon
+              name="left"
+              type="antdesign"
+              containerStyle={styles.arrow}
+            />
+          </TouchableOpacity>
+          <Text style={styles.headline}>{monthLong}</Text>
+          <TouchableOpacity
+            onPress={() => {
+              nextMonth()
+            }}
+          >
+            <Icon
+              name="right"
+              type="antdesign"
+              containerStyle={styles.arrow}
+            />
+          </TouchableOpacity>
+        </View>
         <ScrollView>
           <View style={styles.salahNameRow}>
             {salahNames.map(name => (
@@ -80,15 +141,25 @@ export default function Month({ navigation }) {
                         {
                           backgroundColor: 'palegreen',
                           height: hp('3%'),
+                          alignItems: 'center',
+                          borderRadius: wp('2%')
+                        }
+                      ]
+                    : item[1] % 2 != 0
+                    ? styles.salahTimeRow
+                    : [
+                        styles.salahTimeRow,
+                        {
+                          backgroundColor: 'gainsboro',
+                          height: hp('3%'),
                           alignItems: 'center'
                         }
                       ]
-                    : styles.salahTimeRow
                 }
-                key={item[1] * Math.random()}
+                key={item[1]}
               >
                 <Text style={styles.month}>
-                  {item[1]} {month}
+                  {item[1]} {monthShort}
                 </Text>
                 <Text style={styles.salahTime}>
                   {item[2]}
@@ -120,12 +191,11 @@ export default function Month({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'honeydew'
+    backgroundColor: 'white'
   },
   headline: {
     fontSize: 22,
     fontWeight: 'bold',
-    marginTop: hp('2%'),
     marginLeft: wp('2%')
   },
   salahNameRow: {
@@ -133,7 +203,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginLeft: wp('16%'),
     marginTop: hp('1.1%'),
-    marginRight: wp('2%')
+    marginRight: wp('2%'),
+    borderBottomWidth: 0.3,
+    height: hp('3%'),
+    borderBottomColor: 'lightgray'
   },
   salahName: {
     fontSize: 15,
@@ -142,14 +215,15 @@ const styles = StyleSheet.create({
   salahTimeRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: hp('1.1%'),
+
     paddingHorizontal: wp('1%'),
     marginLeft: wp('1%'),
     marginRight: wp('1.2%'),
-    borderRadius: wp('2%')
+    height: hp('3%'),
+    marginVertical: hp('.5%')
   },
   salahTime: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '400',
     width: wp('12%'),
     textAlign: 'center'
@@ -163,5 +237,56 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: 'dimgray',
     width: wp('12%')
+  },
+  header: {
+    flexDirection: 'row',
+
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: hp('5%')
+  },
+  arrow: {
+    marginHorizontal: wp('2%'),
+    marginTop: hp('.4%')
   }
 })
+
+// switch index {
+//   case 1:
+//     monthNumber = 1
+//     break;
+//   case 2:
+//     monthNumber = 2
+//     break;
+//   case 3:
+//     monthNumber = 3
+//     break;
+//   case 4:
+//     monthNumber = 4
+//     break;
+//   case 5:
+//     monthNumber = 5
+//     break;
+//   case 6:
+//     monthNumber = 6
+//     break;
+//   case 7:
+//     monthNumber = 7
+//     break;
+//   case 8:
+//     monthNumber = 8
+//     break;
+//   case 9:
+//     monthNumber = 9
+//     break;
+//   case 10:
+//     monthNumber = 10
+//     break;
+//   case 11:
+//     monthNumber =11
+//     break;
+//   case 12:
+//     monthNumber = 12
+//     break;
+//   default:
+//     monthNumber = new Date().getMonth() + 1

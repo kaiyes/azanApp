@@ -32,7 +32,9 @@ export default function Today({ navigation }) {
   const [icon, setIcon] = useState(false)
   const [time, setTime] = useState([])
   const [index, setIndex] = useState(0)
-  const [hour, setHour] = useState(0)
+  const [hour, setHour] = useState(
+    `${dayjs().hour()}: ${dayjs().minute()}`
+  )
 
   async function getTime() {
     let month = (await dayjs().month()) + 1
@@ -49,12 +51,10 @@ export default function Today({ navigation }) {
 
   function getHour() {
     setHour(`${dayjs().hour()}: ${dayjs().minute()}`)
-    return `${dayjs().hour()}: ${dayjs().minute()}`
   }
 
   useInterval(() => {
     getHour()
-    console.log(getHour())
   }, 10000)
 
   useEffect(() => {
