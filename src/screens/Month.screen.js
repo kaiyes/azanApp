@@ -79,7 +79,7 @@ export default function Month({ navigation }) {
                     ? [
                         styles.salahTimeRow,
                         {
-                          backgroundColor: 'lightgray',
+                          backgroundColor: 'palegreen',
                           height: hp('3%'),
                           alignItems: 'center'
                         }
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   salahNameRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginLeft: wp('17%'),
+    marginLeft: wp('16.5%'),
     marginTop: hp('1.1%'),
     marginRight: wp('2%')
   },
@@ -132,7 +132,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginTop: hp('1.1%'),
-    marginRight: wp('1.2%')
+    paddingHorizontal: wp('1%'),
+    marginLeft: wp('1%'),
+    marginRight: wp('1.2%'),
+    borderRadius: wp('2%')
   },
   salahTime: {
     fontSize: 14,
