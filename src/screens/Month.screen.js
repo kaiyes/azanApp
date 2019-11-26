@@ -85,7 +85,7 @@ export default function Month({ navigation }) {
                       ]
                     : styles.salahTimeRow
                 }
-                key={item[1]}
+                key={item[1] * Math.random()}
               >
                 <Text style={styles.month}>
                   {item[1]} {month}
