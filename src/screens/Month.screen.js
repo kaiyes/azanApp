@@ -14,7 +14,6 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
-import useInterval from '@use-it/interval'
 //utility
 import Time from '../utility/helsingborg'
 
@@ -127,7 +126,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     marginTop: hp('2%'),
-    marginLeft: wp('5%')
+    marginLeft: wp('2%')
   },
   salahNameRow: {
     flexDirection: 'row',

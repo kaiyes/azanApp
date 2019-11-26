@@ -22,6 +22,7 @@ import {
   getTime,
   parse
 } from 'date-fns'
+import useInterval from '@use-it/interval'
 
 import { findIndex } from 'lodash'
 //utility
@@ -31,6 +32,7 @@ export default function Today({ navigation }) {
   const [icon, setIcon] = useState(false)
   const [time, setTime] = useState([])
   const [index, setIndex] = useState(0)
+  const [hour, setHour] = useState(0)
 
   async function getTime() {
     let month = (await dayjs().month()) + 1
@@ -46,8 +48,14 @@ export default function Today({ navigation }) {
   }
 
   function getHour() {
+    setHour(`${dayjs().hour()}: ${dayjs().minute()}`)
     return `${dayjs().hour()}: ${dayjs().minute()}`
   }
+
+  useInterval(() => {
+    getHour()
+    console.log(getHour())
+  }, 10000)
 
   useEffect(() => {
     getTime()
@@ -61,7 +69,7 @@ export default function Today({ navigation }) {
           <Text style={styles.salahName}>
             {dayjs().format('dddd, D MMM')}
           </Text>
-          <Text style={styles.salahTime}>{getHour()}</Text>
+          <Text style={styles.salahTime}>{hour}</Text>
 
           <Text style={styles.timeLeft}>
             {new Intl.DateTimeFormat('en-TN-u-ca-islamic', {
