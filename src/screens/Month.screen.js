@@ -44,6 +44,12 @@ export default function Month({ navigation }) {
     await setDates(time)
   }
 
+  function whichStyle() {
+    return dates[1] == new Date().getDate()
+      ? 'styles.salahTimeRow'
+      : `[styles.salahTimeRow, { backgroundColor: 'lightgray' }]`
+  }
+
   useEffect(() => {
     getDate()
   }, [])
@@ -68,10 +74,21 @@ export default function Month({ navigation }) {
           ) : (
             dates.map(item => (
               <View
-                style={styles.salahTimeRow}
+                style={
+                  item[1] === new Date().getDate()
+                    ? [
+                        styles.salahTimeRow,
+                        {
+                          backgroundColor: 'lightgray',
+                          height: hp('3%'),
+                          alignItems: 'center'
+                        }
+                      ]
+                    : styles.salahTimeRow
+                }
                 key={item[1]}
               >
-                <Text style={styles.salahName}>
+                <Text style={styles.month}>
                   {item[1]} {month}
                 </Text>
                 <Text style={styles.salahTime}>5: 43</Text>
@@ -104,7 +121,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginLeft: wp('17%'),
-    marginTop: hp('1%'),
+    marginTop: hp('1.1%'),
     marginRight: wp('2%')
   },
   salahName: {
@@ -114,7 +131,7 @@ const styles = StyleSheet.create({
   salahTimeRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: hp('1.2%'),
+    marginTop: hp('1.1%'),
     marginRight: wp('1.2%')
   },
   salahTime: {
@@ -124,5 +141,10 @@ const styles = StyleSheet.create({
   waitText: {
     fontSize: 33,
     fontWeight: '600'
+  },
+  month: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: 'dimgray'
   }
 })
