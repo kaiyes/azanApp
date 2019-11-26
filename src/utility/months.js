@@ -2,11 +2,6 @@ export default [
   {
     short: 'Jan',
     long: 'January',
-    number: 0
-  },
-  {
-    short: 'Jan',
-    long: 'January',
     number: 1
   },
   {
@@ -63,10 +58,5 @@ export default [
     short: 'Dec',
     long: 'December',
     number: 12
-  },
-  {
-    short: 'Dec',
-    long: 'December',
-    number: 13
   }
 ]
