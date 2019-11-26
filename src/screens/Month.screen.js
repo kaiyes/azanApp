@@ -56,43 +56,9 @@ export default function Month({ navigation }) {
     await setDates(time)
   }
 
-  function nextMonth() {
-    console.log('indexBefore:', index)
-    if (index === 13) {
-      setIndex(1)
-    } else {
-      setIndex(index + 1)
-    }
-    console.log('indexAfter:', index)
-    let month = Months.find(item => item.number == index)
-    setMonthShort(month.short)
-    setMonthLong(month.long)
-
-    let time = Time.filter(item => {
-      return item[0] == index
-    })
-    setDates(time)
-  }
-
-  async function previousMonth() {
-    console.log('indexBefore:', index)
-    if (index === 0) {
-      await setIndex(12)
-    } else {
-      await setIndex(index - 1)
-    }
-    console.log('indexAfter:', index)
-    let month = Months.find(item => item.number == index)
-    setMonthShort(month.short)
-    setMonthLong(month.long)
-    let time = Time.filter(item => {
-      return item[0] == index
-    })
-    setDates(time)
-  }
-
   async function changeMonth(monthName) {
     let month = Months.find(item => item.long == monthName)
+    console.log(monthName)
     setMonthShort(month.short)
     setMonthLong(month.long)
     let time = Time.filter(item => {
@@ -216,6 +182,11 @@ export default function Month({ navigation }) {
                     iconType="entypo"
                     uncheckedIcon="circle"
                     checkedColor="red"
+                    onPress={() => {
+                      console.log('itemCheckBox', item)
+                      changeMonth(item.long)
+                      setModal(false)
+                    }}
                   />
                 </View>
               ))}
@@ -309,7 +280,7 @@ const styles = StyleSheet.create({
   },
   monthRow: {
     flexDirection: 'row',
-    height: hp('7%'),
+    height: hp('6%'),
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingRight: wp('3%')
@@ -359,3 +330,38 @@ const styles = StyleSheet.create({
 //     break;
 //   default:
 //     monthNumber = new Date().getMonth() + 1
+
+// function nextMonth() {
+//   console.log('indexBefore:', index)
+//   if (index === 13) {
+//     setIndex(1)
+//   } else {
+//     setIndex(index + 1)
+//   }
+//   console.log('indexAfter:', index)
+//   let month = Months.find(item => item.number == index)
+//   setMonthShort(month.short)
+//   setMonthLong(month.long)
+//
+//   let time = Time.filter(item => {
+//     return item[0] == index
+//   })
+//   setDates(time)
+// }
+//
+// async function previousMonth() {
+//   console.log('indexBefore:', index)
+//   if (index === 0) {
+//     await setIndex(12)
+//   } else {
+//     await setIndex(index - 1)
+//   }
+//   console.log('indexAfter:', index)
+//   let month = Months.find(item => item.number == index)
+//   setMonthShort(month.short)
+//   setMonthLong(month.long)
+//   let time = Time.filter(item => {
+//     return item[0] == index
+//   })
+//   setDates(time)
+// }
