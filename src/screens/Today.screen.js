@@ -16,7 +16,12 @@ import {
 } from 'react-native-responsive-screen'
 import { Icon } from 'react-native-elements'
 import dayjs from 'dayjs'
-import { toDate } from 'date-fns'
+import {
+  toDate,
+  closestIndexTo,
+  getTime,
+  parse
+} from 'date-fns'
 
 import { findIndex } from 'lodash'
 //utility
@@ -40,63 +45,35 @@ export default function Today({ navigation }) {
     await setTime(SalahTime[index])
   }
 
-  function wakt(x, y) {
-    let today = new Date()
-    const salahTime = toDate(
-      new Date(
-        today.getFullYear(),
-        today.getMonth() + 1,
-        today.getDate(),
-        x,
-        y
-      )
-    )
-    let diff = salahTime - today
-    return diff
-  }
-
-  function whichWakt() {
-    let salahTimes = time
-      .splice(2)
-      .map(item => item.split(':'))
-    console.log(salahTimes)
-    let ans = salahTimes.map(item => wakt(item[0], item[1]))
-    let closestWakt = ans.reduce((acc, val) =>
-      acc > val ? acc : val
-    )
-    console.log(closestWakt)
-    return closestWakt
-  }
-
   useEffect(() => {
     getTime()
-    whichWakt()
-  }, [index])
+  })
 
   return (
     <>
       <StatusBar barStyle="light-content" />
       <View style={styles.container}>
         <View style={styles.topCard}>
-          <Text style={styles.salahName}>Dhuhr</Text>
-          <Text style={styles.salahTime}>12:43</Text>
-          <Text style={styles.timeLeft}> time to Asr </Text>
+          <Text style={styles.salahName}>
+            {dayjs().format('dddd, D MMM')}
+          </Text>
+          <Text style={styles.salahTime}>
+            {dayjs().hour()}:{dayjs().minute()}
+          </Text>
+          <Text style={styles.timeLeft}>
+            {' '}
+            {new Intl.DateTimeFormat('en-TN-u-ca-islamic', {
+              day: '2-digit',
+              month: 'long',
+              year: 'numeric'
+            }).format(Date.now())}{' '}
+          </Text>
         </View>
         <View style={styles.bottomCard}>
           <View style={styles.topRow}>
             <View style={styles.dateHolder}>
               <Text style={styles.englishDate}>
-                {dayjs().format('dddd, D MMM')}
-              </Text>
-              <Text style={styles.arabicDate}>
-                {new Intl.DateTimeFormat(
-                  'en-TN-u-ca-islamic',
-                  {
-                    day: '2-digit',
-                    month: 'long',
-                    year: 'numeric'
-                  }
-                ).format(Date.now())}
+                Helsingborg
               </Text>
             </View>
           </View>

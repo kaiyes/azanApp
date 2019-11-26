@@ -60,8 +60,8 @@ function LoggedInStack() {
         }
       })}
       tabBarOptions={{
-        activeTintColor: 'slateblue',
-        inactiveTintColor: 'darkgrey'
+        activeTintColor: 'seagreen',
+        inactiveTintColor: 'dimgray'
       }}
     >
       <Tab.Screen name="Today" component={TodayScreen} />
