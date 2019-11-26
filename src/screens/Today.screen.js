@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import {
   SafeAreaView,
   StyleSheet,
@@ -27,6 +27,26 @@ import { findIndex } from 'lodash'
 //utility
 import SalahTime from '../utility/helsingborg'
 
+function useInterval(callback, delay) {
+  const savedCallback = useRef()
+
+  // Remember the latest callback.
+  useEffect(() => {
+    savedCallback.current = callback
+  }, [callback])
+
+  // Set up the interval.
+  useEffect(() => {
+    function tick() {
+      savedCallback.current()
+    }
+    if (delay !== null) {
+      let id = setInterval(tick, delay)
+      return () => clearInterval(id)
+    }
+  }, [delay])
+}
+
 export default function Today({ navigation }) {
   const [icon, setIcon] = useState(false)
   const [time, setTime] = useState([])
@@ -45,6 +65,14 @@ export default function Today({ navigation }) {
     await setTime(SalahTime[index])
   }
 
+  useInterval(() => {
+    return getHour()
+  }, 1000)
+
+  function getHour() {
+    return `${dayjs().hour()}: ${dayjs().minute()}`
+  }
+
   useEffect(() => {
     getTime()
   })
@@ -57,11 +85,9 @@ export default function Today({ navigation }) {
           <Text style={styles.salahName}>
             {dayjs().format('dddd, D MMM')}
           </Text>
-          <Text style={styles.salahTime}>
-            {dayjs().hour()}:{dayjs().minute()}
-          </Text>
+          <Text style={styles.salahTime}>{getHour()}</Text>
+
           <Text style={styles.timeLeft}>
-            {' '}
             {new Intl.DateTimeFormat('en-TN-u-ca-islamic', {
               day: '2-digit',
               month: 'long',
