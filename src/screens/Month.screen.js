@@ -26,7 +26,6 @@ export default function Month({ navigation }) {
   const [monthLong, setMonthLong] = useState('')
   const [index, setIndex] = useState(1)
   const [modal, setModal] = useState(false)
-  const [checked, setChecked] = useState(false)
 
   const salahNames = [
     'Fajr',
@@ -58,7 +57,6 @@ export default function Month({ navigation }) {
 
   async function changeMonth(monthName) {
     let month = Months.find(item => item.long == monthName)
-    console.log(monthName)
     setMonthShort(month.short)
     setMonthLong(month.long)
     let time = Time.filter(item => {
@@ -105,6 +103,7 @@ export default function Month({ navigation }) {
             dates.map(item => (
               <View
                 style={
+                  item[0] === new Date().getMonth() + 1 &&
                   item[1] === new Date().getDate()
                     ? [
                         styles.salahTimeRow,
@@ -181,9 +180,12 @@ export default function Month({ navigation }) {
                     center
                     iconType="entypo"
                     uncheckedIcon="circle"
-                    checkedColor="red"
+                    checkedIcon="check"
+                    checkedColor="lightgreen"
+                    checked={
+                      item.long === monthLong ? true : false
+                    }
                     onPress={() => {
-                      console.log('itemCheckBox', item)
                       changeMonth(item.long)
                       setModal(false)
                     }}
