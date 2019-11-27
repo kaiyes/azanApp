@@ -7,7 +7,8 @@ import {
   Text,
   StatusBar,
   FlatList,
-  TouchableOpacity
+  TouchableOpacity,
+  Platform
 } from 'react-native'
 import { Avatar } from 'react-native-elements'
 import {
@@ -32,9 +33,7 @@ export default function Today({ navigation }) {
   const [icon, setIcon] = useState(false)
   const [time, setTime] = useState([])
   const [index, setIndex] = useState(0)
-  const [hour, setHour] = useState(
-    `${dayjs().hour()}: ${dayjs().minute()}`
-  )
+  const [hour, setHour] = useState(currentTime())
 
   async function getTime() {
     let month = (await dayjs().month()) + 1
@@ -49,8 +48,20 @@ export default function Today({ navigation }) {
     await setTime(SalahTime[index])
   }
 
+  function currentTime() {
+    let hour =
+      new Date().getHours().toString().length == 1
+        ? `0${new Date().getHours()}`
+        : new Date().getHours()
+    let minute =
+      new Date().getMinutes().toString().length == 1
+        ? `0${new Date().getMinutes()}`
+        : new Date().getMinutes()
+
+    return `${hour}: ${minute}`
+  }
   function getHour() {
-    setHour(`${dayjs().hour()}: ${dayjs().minute()}`)
+    setHour(currentTime())
   }
 
   useInterval(() => {
@@ -71,13 +82,7 @@ export default function Today({ navigation }) {
           </Text>
           <Text style={styles.salahTime}>{hour}</Text>
 
-          <Text style={styles.timeLeft}>
-            {new Intl.DateTimeFormat('en-TN-u-ca-islamic', {
-              day: '2-digit',
-              month: 'long',
-              year: 'numeric'
-            }).format(Date.now())}{' '}
-          </Text>
+          <Text style={styles.timeLeft} />
         </View>
         <View style={styles.bottomCard}>
           <View style={styles.topRow}>
@@ -154,7 +159,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'seagreen',
     justifyContent: 'center',
     alignItems: 'center',
-    height: hp('43%')
+    height: Platform.OS === 'ios' ? hp('45%') : hp('37%')
   },
   bottomCard: {
     flex: 1,

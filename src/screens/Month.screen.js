@@ -24,7 +24,6 @@ export default function Month({ navigation }) {
   const [dates, setDates] = useState([])
   const [monthShort, setMonthShort] = useState('')
   const [monthLong, setMonthLong] = useState('')
-  const [index, setIndex] = useState(1)
   const [modal, setModal] = useState(false)
 
   const salahNames = [
@@ -37,20 +36,15 @@ export default function Month({ navigation }) {
   ]
 
   async function getDate() {
-    let today = new Date()
-    let currentMonth = today.getMonth() + 1
-    let monthName = today.toLocaleString('default', {
-      month: 'short'
-    })
-    let monthNameLong = today.toLocaleString('default', {
-      month: 'long'
-    })
-
-    setMonthShort(monthName)
-    setMonthLong(monthNameLong)
+    let monthObject = Months.find(
+      item => item.number == new Date().getMonth() + 1
+    )
+    console.log(monthObject)
+    setMonthShort(monthObject.short)
+    setMonthLong(monthObject.long)
 
     let time = await Time.filter(item => {
-      return item[0] == currentMonth
+      return item[0] == new Date().getMonth() + 1
     })
     await setDates(time)
   }
@@ -87,9 +81,7 @@ export default function Month({ navigation }) {
             />
           </TouchableOpacity>
         </View>
-        <ScrollView
-          contentContainerStyle={styles.scrollView}
-        >
+        <ScrollView>
           <View style={styles.salahNameRow}>
             {salahNames.map(name => (
               <Text style={styles.salahName}>{name}</Text>
@@ -180,7 +172,7 @@ export default function Month({ navigation }) {
                     center
                     iconType="entypo"
                     uncheckedIcon="circle"
-                    checkedIcon="check"
+                    checkedIcon="controller-record"
                     checkedColor="lightgreen"
                     checked={
                       item.long === monthLong ? true : false
@@ -216,6 +208,8 @@ const styles = StyleSheet.create({
     marginLeft: wp('16%'),
     marginTop: hp('1.1%'),
     marginRight: wp('2%'),
+    marginBottom: hp('1%'),
+
     borderBottomWidth: 0.3,
     height: hp('3%'),
     borderBottomColor: 'lightgray'
@@ -292,78 +286,3 @@ const styles = StyleSheet.create({
     marginTop: hp('2%')
   }
 })
-
-// switch index {
-//   case 1:
-//     monthNumber = 1
-//     break;
-//   case 2:
-//     monthNumber = 2
-//     break;
-//   case 3:
-//     monthNumber = 3
-//     break;
-//   case 4:
-//     monthNumber = 4
-//     break;
-//   case 5:
-//     monthNumber = 5
-//     break;
-//   case 6:
-//     monthNumber = 6
-//     break;
-//   case 7:
-//     monthNumber = 7
-//     break;
-//   case 8:
-//     monthNumber = 8
-//     break;
-//   case 9:
-//     monthNumber = 9
-//     break;
-//   case 10:
-//     monthNumber = 10
-//     break;
-//   case 11:
-//     monthNumber =11
-//     break;
-//   case 12:
-//     monthNumber = 12
-//     break;
-//   default:
-//     monthNumber = new Date().getMonth() + 1
-
-// function nextMonth() {
-//   console.log('indexBefore:', index)
-//   if (index === 13) {
-//     setIndex(1)
-//   } else {
-//     setIndex(index + 1)
-//   }
-//   console.log('indexAfter:', index)
-//   let month = Months.find(item => item.number == index)
-//   setMonthShort(month.short)
-//   setMonthLong(month.long)
-//
-//   let time = Time.filter(item => {
-//     return item[0] == index
-//   })
-//   setDates(time)
-// }
-//
-// async function previousMonth() {
-//   console.log('indexBefore:', index)
-//   if (index === 0) {
-//     await setIndex(12)
-//   } else {
-//     await setIndex(index - 1)
-//   }
-//   console.log('indexAfter:', index)
-//   let month = Months.find(item => item.number == index)
-//   setMonthShort(month.short)
-//   setMonthLong(month.long)
-//   let time = Time.filter(item => {
-//     return item[0] == index
-//   })
-//   setDates(time)
-// }
