@@ -204,6 +204,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginLeft: wp('16%'),
     marginRight: wp('2%'),
+    marginVertical: Platform.OS === 'ios' ? hp('1%') : 0,
     borderBottomWidth: 0.3,
     borderBottomColor: 'lightgray'
   },
@@ -219,7 +220,7 @@ const styles = StyleSheet.create({
     marginRight: wp('1.2%')
   },
   salahTime: {
-    fontSize: 13,
+    fontSize: Platform.OS === 'ios' ? 14 : 12,
     fontWeight: '400',
     width: wp('12%'),
     textAlign: 'center'
@@ -238,7 +239,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: hp('1%')
+    marginVertical:
+      Platform.OS === 'ios' ? hp('1.5%') : hp('1%')
   },
   arrow: {
     marginHorizontal: wp('2%'),
@@ -276,26 +278,3 @@ const styles = StyleSheet.create({
     marginTop: hp('2%')
   }
 })
-
-// <>
-//   <StatusBar barStyle="light-content" />
-//   <SafeAreaView>
-//     <View style={styles.header}>
-//       <Text style={styles.headline}>{monthLong}</Text>
-//       <TouchableOpacity
-//         onPress={() => {
-//           setModal(true)
-//         }}
-//       >
-//         <Icon
-//           name="menu"
-//           type="entypo"
-//           containerStyle={styles.menu}
-//         />
-//       </TouchableOpacity>
-//     </View>
-//     <View style={styles.salahNameRow}>
-//       {salahNames.map(name => (
-//         <Text style={styles.salahName}>{name}</Text>
-//       ))}
-//     </View>

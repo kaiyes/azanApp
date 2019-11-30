@@ -1,61 +1,65 @@
 import PushNotification from 'react-native-push-notification'
 
 export default class NotificationService {
-  //onNotificaitn is a function passed in that is to be called when a
-  //notification is to be emitted.
-  constructor(onNotification) {
-    this.configure(onNotification)
-    this.lastId = 0
-  }
+  PushNotification.configure({
+    // (optional) Called when Token is generated (iOS and Android)
+    onRegister: function(token) {
+      console.log('TOKEN:', token)
+    },
 
-  configure(onNotification) {
-    PushNotification.configure({
-      onNotification: onNotification,
+    // (required) Called when a remote or local notification is opened or received
+    onNotification: function(notification) {
+      console.log('NOTIFICATION:', notification)
 
-      // IOS ONLY (optional): default: all - Permissions to register.
-      permissions: {
-        alert: true,
-        badge: true,
-        sound: true
-      },
+      // process the notification
 
-      popInitialNotification: true
-    })
-  }
+      // required on iOS only (see fetchCompletionHandler docs: https://github.com/react-native-community/react-native-push-notification-ios)
+      notification.finish(
+        PushNotificationIOS.FetchResult.NoData
+      )
+    },
 
-  //Appears right away
-  localNotification() {
-    PushNotification.localNotification({
-      title: 'Local Notification',
-      message: 'My Notification Message',
-      playSound: false,
-      soundName: 'default',
-      actions: '["Yes", "No"]'
-    })
-  }
+    // ANDROID ONLY: GCM or FCM Sender ID (product_number) (optional - not required for local notifications, but is need to receive remote push notifications)
+    senderID: 'YOUR GCM (OR FCM) SENDER ID',
 
-  //Appears after a specified time. App does not have to be open.
-  scheduleNotification() {
-    PushNotification.localNotificationSchedule({
-      date: new Date(Date.now() + 10 * 1000), //30 seconds
-      title: 'Scheduled Notification',
-      message: 'My Notification Message',
-      playSound: true,
-      soundName: 'default'
-    })
-  }
+    // IOS ONLY (optional): default: all - Permissions to register.
+    permissions: {
+      alert: true,
+      badge: true,
+      sound: true
+    },
 
-  checkPermission(cbk) {
-    return PushNotification.checkPermissions(cbk)
-  }
+    // Should the initial notification be popped automatically
+    // default: true
+    popInitialNotification: true,
 
-  cancelNotif() {
-    PushNotification.cancelLocalNotifications({
-      id: '' + this.lastId
-    })
-  }
+    /**
+     * (optional) default: true
+     * - Specified if permissions (ios) and token (android and ios) will requested or not,
+     * - if not, you must call PushNotificationsHandler.requestPermissions() later
+     */
+    requestPermissions: true
+  })
 
-  cancelAll() {
-    PushNotification.cancelAllLocalNotifications()
-  }
+
+    function localNotification() {
+      PushNotification.localNotification({
+        title: 'Local Notification',
+        message: 'My Notification Message',
+        playSound: true,
+        soundName: 'default',
+        actions: '["Yes", "No"]'
+      })
+    }
+
+    function scheduleNotification() {
+      PushNotification.localNotificationSchedule({
+        date: new Date(Date.now() + 5 * 1000),
+        title: 'Asr Salah',
+        message: '5 minutes to Salah',
+        playSound: true,
+        soundName: 'default'
+      })
+    }
+
 }
