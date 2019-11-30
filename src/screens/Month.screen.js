@@ -64,131 +64,128 @@ export default function Month({ navigation }) {
   }, [])
 
   return (
-    <>
-      <StatusBar barStyle="light-content" />
-      <SafeAreaView>
-        <View style={styles.header}>
-          <Text style={styles.headline}>{monthLong}</Text>
-          <TouchableOpacity
-            onPress={() => {
-              setModal(true)
-            }}
-          >
-            <Icon
-              name="menu"
-              type="entypo"
-              containerStyle={styles.menu}
-            />
-          </TouchableOpacity>
-        </View>
-        <ScrollView>
-          <View style={styles.salahNameRow}>
-            {salahNames.map(name => (
-              <Text style={styles.salahName}>{name}</Text>
+    <SafeAreaView>
+      <View style={styles.header}>
+        <Text style={styles.headline}>{monthLong}</Text>
+        <TouchableOpacity
+          onPress={() => {
+            setModal(true)
+          }}
+        >
+          <Icon
+            name="menu"
+            type="entypo"
+            containerStyle={styles.menu}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.salahNameRow}>
+        {salahNames.map(name => (
+          <Text style={styles.salahName}>{name}</Text>
+        ))}
+      </View>
+      <ScrollView>
+        {dates === [] ? (
+          <Text style={styles.waitText}>
+            please wait a bit while we load the dates
+          </Text>
+        ) : (
+          dates.map(item => (
+            <View
+              style={
+                item[0] === new Date().getMonth() + 1 &&
+                item[1] === new Date().getDate()
+                  ? [
+                      styles.salahTimeRow,
+                      {
+                        backgroundColor: 'palegreen',
+                        height: hp('3%'),
+                        alignItems: 'center',
+                        borderRadius: wp('2%')
+                      }
+                    ]
+                  : item[1] % 2 != 0
+                  ? styles.salahTimeRow
+                  : [
+                      styles.salahTimeRow,
+                      {
+                        backgroundColor: 'gainsboro',
+                        height: hp('3%'),
+                        alignItems: 'center'
+                      }
+                    ]
+              }
+              key={item[1]}
+            >
+              <Text style={styles.month}>
+                {item[1]} {monthShort}
+              </Text>
+              <Text style={styles.salahTime}>
+                {item[2]}
+              </Text>
+              <Text style={styles.salahTime}>
+                {item[3]}
+              </Text>
+              <Text style={styles.salahTime}>
+                {item[4]}
+              </Text>
+              <Text style={styles.salahTime}>
+                {item[5]}
+              </Text>
+              <Text style={styles.salahTime}>
+                {item[6]}
+              </Text>
+              <Text style={styles.salahTime}>
+                {item[7]}
+              </Text>
+            </View>
+          ))
+        )}
+      </ScrollView>
+      <View style={styles.modalContainer}>
+        <Modal
+          isVisible={modal}
+          onBackdropPress={() => {
+            setModal(false)
+          }}
+        >
+          <View style={styles.modal}>
+            <TouchableOpacity
+              onPress={() => {
+                setModal(false)
+              }}
+            >
+              <Icon
+                name="closecircle"
+                type="antdesign"
+                containerStyle={styles.close}
+              />
+            </TouchableOpacity>
+            {Months.map(item => (
+              <View style={styles.monthRow}>
+                <Text style={styles.monthNameModal}>
+                  {item.long}
+                </Text>
+                <CheckBox
+                  center
+                  iconType="entypo"
+                  uncheckedIcon="circle"
+                  checkedIcon="controller-record"
+                  checkedColor="lightgreen"
+                  checked={
+                    item.long === monthLong ? true : false
+                  }
+                  onPress={() => {
+                    changeMonth(item.long)
+                    setModal(false)
+                  }}
+                />
+              </View>
             ))}
           </View>
-          {dates === [] ? (
-            <Text style={styles.waitText}>
-              please wait a bit while we load the dates
-            </Text>
-          ) : (
-            dates.map(item => (
-              <View
-                style={
-                  item[0] === new Date().getMonth() + 1 &&
-                  item[1] === new Date().getDate()
-                    ? [
-                        styles.salahTimeRow,
-                        {
-                          backgroundColor: 'palegreen',
-                          height: hp('3%'),
-                          alignItems: 'center',
-                          borderRadius: wp('2%')
-                        }
-                      ]
-                    : item[1] % 2 != 0
-                    ? styles.salahTimeRow
-                    : [
-                        styles.salahTimeRow,
-                        {
-                          backgroundColor: 'gainsboro',
-                          height: hp('3%'),
-                          alignItems: 'center'
-                        }
-                      ]
-                }
-                key={item[1]}
-              >
-                <Text style={styles.month}>
-                  {item[1]} {monthShort}
-                </Text>
-                <Text style={styles.salahTime}>
-                  {item[2]}
-                </Text>
-                <Text style={styles.salahTime}>
-                  {item[3]}
-                </Text>
-                <Text style={styles.salahTime}>
-                  {item[4]}
-                </Text>
-                <Text style={styles.salahTime}>
-                  {item[5]}
-                </Text>
-                <Text style={styles.salahTime}>
-                  {item[6]}
-                </Text>
-                <Text style={styles.salahTime}>
-                  {item[7]}
-                </Text>
-              </View>
-            ))
-          )}
-        </ScrollView>
-        <View style={styles.modalContainer}>
-          <Modal
-            isVisible={modal}
-            onBackdropPress={() => {
-              setModal(false)
-            }}
-          >
-            <View style={styles.modal}>
-              <TouchableOpacity
-                onPress={() => {
-                  setModal(false)
-                }}
-              >
-                <Icon
-                  name="closecircle"
-                  type="antdesign"
-                  containerStyle={styles.close}
-                />
-              </TouchableOpacity>
-              {Months.map(item => (
-                <View style={styles.monthRow}>
-                  <Text style={styles.monthNameModal}>
-                    {item.long}
-                  </Text>
-                  <CheckBox
-                    center
-                    iconType="entypo"
-                    uncheckedIcon="circle"
-                    checkedIcon="controller-record"
-                    checkedColor="lightgreen"
-                    checked={
-                      item.long === monthLong ? true : false
-                    }
-                    onPress={() => {
-                      changeMonth(item.long)
-                      setModal(false)
-                    }}
-                  />
-                </View>
-              ))}
-            </View>
-          </Modal>
-        </View>
-      </SafeAreaView>
-    </>
+        </Modal>
+      </View>
+    </SafeAreaView>
   )
 }
 
@@ -206,30 +203,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginLeft: wp('16%'),
-    marginTop: hp('1.1%'),
     marginRight: wp('2%'),
-    marginBottom: hp('1%'),
-
     borderBottomWidth: 0.3,
-    height: hp('3%'),
     borderBottomColor: 'lightgray'
   },
   salahName: {
     fontSize: 15,
-    fontWeight: '600'
+    fontWeight: 'bold'
   },
   salahTimeRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-
     paddingHorizontal: wp('1%'),
     marginLeft: wp('1%'),
-    marginRight: wp('1.2%'),
-    height: hp('3%'),
-    marginVertical: hp('.5%')
+    marginRight: wp('1.2%')
   },
   salahTime: {
-    fontSize: 16,
+    fontSize: 13,
     fontWeight: '400',
     width: wp('12%'),
     textAlign: 'center'
@@ -239,7 +229,7 @@ const styles = StyleSheet.create({
     fontWeight: '600'
   },
   month: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: '700',
     color: 'dimgray',
     width: wp('12%')
@@ -248,7 +238,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: hp('5%')
+    marginTop: hp('1%')
   },
   arrow: {
     marginHorizontal: wp('2%'),
@@ -286,3 +276,26 @@ const styles = StyleSheet.create({
     marginTop: hp('2%')
   }
 })
+
+// <>
+//   <StatusBar barStyle="light-content" />
+//   <SafeAreaView>
+//     <View style={styles.header}>
+//       <Text style={styles.headline}>{monthLong}</Text>
+//       <TouchableOpacity
+//         onPress={() => {
+//           setModal(true)
+//         }}
+//       >
+//         <Icon
+//           name="menu"
+//           type="entypo"
+//           containerStyle={styles.menu}
+//         />
+//       </TouchableOpacity>
+//     </View>
+//     <View style={styles.salahNameRow}>
+//       {salahNames.map(name => (
+//         <Text style={styles.salahName}>{name}</Text>
+//       ))}
+//     </View>
