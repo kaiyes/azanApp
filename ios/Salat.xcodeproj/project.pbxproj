@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* AdminAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AdminAppTests.m */; };
+		00E356F31AD99517003FC87E /* SalatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SalatTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -15,11 +15,11 @@
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* AdminAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AdminAppTests.m */; };
-		33708E485240F6D386EE4B1D /* libPods-AdminApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B69007EE875EA733AF252 /* libPods-AdminApp.a */; };
-		596B24D7EE2197ED46522A52 /* libPods-AdminApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B6BD851770DAF3C7812DA0 /* libPods-AdminApp-tvOS.a */; };
-		743F685F6A19780F2B237DCE /* libPods-AdminAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3692E78ECB55108ABC1E92 /* libPods-AdminAppTests.a */; };
-		BBE767C084CE989A2B5F3688 /* libPods-AdminApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72EDAB9007F1ED018CB60B3 /* libPods-AdminApp-tvOSTests.a */; };
+		2DCD954D1E0B4F2C00145EB5 /* SalatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SalatTests.m */; };
+		33708E485240F6D386EE4B1D /* libPods-Salat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B69007EE875EA733AF252 /* libPods-Salat.a */; };
+		596B24D7EE2197ED46522A52 /* libPods-Salat-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B6BD851770DAF3C7812DA0 /* libPods-Salat-tvOS.a */; };
+		743F685F6A19780F2B237DCE /* libPods-SalatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3692E78ECB55108ABC1E92 /* libPods-SalatTests.a */; };
+		BBE767C084CE989A2B5F3688 /* libPods-Salat-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C72EDAB9007F1ED018CB60B3 /* libPods-Salat-tvOSTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,45 +28,45 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = AdminApp;
+			remoteInfo = Salat;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "AdminApp-tvOS";
+			remoteInfo = "Salat-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* AdminAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdminAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* SalatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SalatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* AdminAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdminAppTests.m; sourceTree = "<group>"; };
-		07D3A6327B2A82EB59B3E98C /* Pods-AdminApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminApp.release.xcconfig"; path = "Target Support Files/Pods-AdminApp/Pods-AdminApp.release.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* AdminApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdminApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = AdminApp/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = AdminApp/AppDelegate.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* SalatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SalatTests.m; sourceTree = "<group>"; };
+		07D3A6327B2A82EB59B3E98C /* Pods-Salat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salat.release.xcconfig"; path = "Target Support Files/Pods-Salat/Pods-Salat.release.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* Salat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Salat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Salat/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Salat/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = AdminApp/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AdminApp/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AdminApp/main.m; sourceTree = "<group>"; };
-		18D598CDB0702F1860DACAA5 /* Pods-AdminApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminApp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-AdminApp-tvOS/Pods-AdminApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* AdminApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AdminApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* AdminApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AdminApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4546C2FD20468DB9147AC138 /* Pods-AdminApp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminApp-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-AdminApp-tvOSTests/Pods-AdminApp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		4C3692E78ECB55108ABC1E92 /* libPods-AdminAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AdminAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F20A28059F5CD1AACA95B65 /* Pods-AdminAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminAppTests.release.xcconfig"; path = "Target Support Files/Pods-AdminAppTests/Pods-AdminAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		86B0D4EA9858B951FCC7AB61 /* Pods-AdminApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-AdminApp-tvOSTests/Pods-AdminApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A0B6BD851770DAF3C7812DA0 /* libPods-AdminApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AdminApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B50D54F2DAFDAA748906A37C /* Pods-AdminAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminAppTests.debug.xcconfig"; path = "Target Support Files/Pods-AdminAppTests/Pods-AdminAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B6B039935559FD8011CEE30A /* Pods-AdminApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminApp.debug.xcconfig"; path = "Target Support Files/Pods-AdminApp/Pods-AdminApp.debug.xcconfig"; sourceTree = "<group>"; };
-		C11B69007EE875EA733AF252 /* libPods-AdminApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AdminApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C72EDAB9007F1ED018CB60B3 /* libPods-AdminApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AdminApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Salat/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Salat/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Salat/main.m; sourceTree = "<group>"; };
+		18D598CDB0702F1860DACAA5 /* Pods-Salat-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salat-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Salat-tvOS/Pods-Salat-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* Salat-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Salat-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* Salat-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Salat-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4546C2FD20468DB9147AC138 /* Pods-Salat-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salat-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Salat-tvOSTests/Pods-Salat-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		4C3692E78ECB55108ABC1E92 /* libPods-SalatTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SalatTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F20A28059F5CD1AACA95B65 /* Pods-SalatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SalatTests.release.xcconfig"; path = "Target Support Files/Pods-SalatTests/Pods-SalatTests.release.xcconfig"; sourceTree = "<group>"; };
+		86B0D4EA9858B951FCC7AB61 /* Pods-Salat-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salat-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Salat-tvOSTests/Pods-Salat-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A0B6BD851770DAF3C7812DA0 /* libPods-Salat-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Salat-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B50D54F2DAFDAA748906A37C /* Pods-SalatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SalatTests.debug.xcconfig"; path = "Target Support Files/Pods-SalatTests/Pods-SalatTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B6B039935559FD8011CEE30A /* Pods-Salat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salat.debug.xcconfig"; path = "Target Support Files/Pods-Salat/Pods-Salat.debug.xcconfig"; sourceTree = "<group>"; };
+		C11B69007EE875EA733AF252 /* libPods-Salat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Salat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C72EDAB9007F1ED018CB60B3 /* libPods-Salat-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Salat-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F55B0DABB19E7E7BD80EC718 /* Pods-AdminApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdminApp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-AdminApp-tvOS/Pods-AdminApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		F55B0DABB19E7E7BD80EC718 /* Pods-Salat-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Salat-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Salat-tvOS/Pods-Salat-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				743F685F6A19780F2B237DCE /* libPods-AdminAppTests.a in Frameworks */,
+				743F685F6A19780F2B237DCE /* libPods-SalatTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33708E485240F6D386EE4B1D /* libPods-AdminApp.a in Frameworks */,
+				33708E485240F6D386EE4B1D /* libPods-Salat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				596B24D7EE2197ED46522A52 /* libPods-AdminApp-tvOS.a in Frameworks */,
+				596B24D7EE2197ED46522A52 /* libPods-Salat-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,20 +98,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBE767C084CE989A2B5F3688 /* libPods-AdminApp-tvOSTests.a in Frameworks */,
+				BBE767C084CE989A2B5F3688 /* libPods-Salat-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* AdminAppTests */ = {
+		00E356EF1AD99517003FC87E /* SalatTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* AdminAppTests.m */,
+				00E356F21AD99517003FC87E /* SalatTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = AdminAppTests;
+			path = SalatTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -122,7 +122,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* AdminApp */ = {
+		13B07FAE1A68108700A75B9A /* Salat */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -133,7 +133,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = AdminApp;
+			name = Salat;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -141,10 +141,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				C11B69007EE875EA733AF252 /* libPods-AdminApp.a */,
-				A0B6BD851770DAF3C7812DA0 /* libPods-AdminApp-tvOS.a */,
-				C72EDAB9007F1ED018CB60B3 /* libPods-AdminApp-tvOSTests.a */,
-				4C3692E78ECB55108ABC1E92 /* libPods-AdminAppTests.a */,
+				C11B69007EE875EA733AF252 /* libPods-Salat.a */,
+				A0B6BD851770DAF3C7812DA0 /* libPods-Salat-tvOS.a */,
+				C72EDAB9007F1ED018CB60B3 /* libPods-Salat-tvOSTests.a */,
+				4C3692E78ECB55108ABC1E92 /* libPods-SalatTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -152,14 +152,14 @@
 		5A7E9CD9971C8994E90A1E5C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B6B039935559FD8011CEE30A /* Pods-AdminApp.debug.xcconfig */,
-				07D3A6327B2A82EB59B3E98C /* Pods-AdminApp.release.xcconfig */,
-				F55B0DABB19E7E7BD80EC718 /* Pods-AdminApp-tvOS.debug.xcconfig */,
-				18D598CDB0702F1860DACAA5 /* Pods-AdminApp-tvOS.release.xcconfig */,
-				86B0D4EA9858B951FCC7AB61 /* Pods-AdminApp-tvOSTests.debug.xcconfig */,
-				4546C2FD20468DB9147AC138 /* Pods-AdminApp-tvOSTests.release.xcconfig */,
-				B50D54F2DAFDAA748906A37C /* Pods-AdminAppTests.debug.xcconfig */,
-				7F20A28059F5CD1AACA95B65 /* Pods-AdminAppTests.release.xcconfig */,
+				B6B039935559FD8011CEE30A /* Pods-Salat.debug.xcconfig */,
+				07D3A6327B2A82EB59B3E98C /* Pods-Salat.release.xcconfig */,
+				F55B0DABB19E7E7BD80EC718 /* Pods-Salat-tvOS.debug.xcconfig */,
+				18D598CDB0702F1860DACAA5 /* Pods-Salat-tvOS.release.xcconfig */,
+				86B0D4EA9858B951FCC7AB61 /* Pods-Salat-tvOSTests.debug.xcconfig */,
+				4546C2FD20468DB9147AC138 /* Pods-Salat-tvOSTests.release.xcconfig */,
+				B50D54F2DAFDAA748906A37C /* Pods-SalatTests.debug.xcconfig */,
+				7F20A28059F5CD1AACA95B65 /* Pods-SalatTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -174,9 +174,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* AdminApp */,
+				13B07FAE1A68108700A75B9A /* Salat */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* AdminAppTests */,
+				00E356EF1AD99517003FC87E /* SalatTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				5A7E9CD9971C8994E90A1E5C /* Pods */,
@@ -189,10 +189,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* AdminApp.app */,
-				00E356EE1AD99517003FC87E /* AdminAppTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* AdminApp-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* AdminApp-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* Salat.app */,
+				00E356EE1AD99517003FC87E /* SalatTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* Salat-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* Salat-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -200,9 +200,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* AdminAppTests */ = {
+		00E356ED1AD99517003FC87E /* SalatTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "AdminAppTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SalatTests" */;
 			buildPhases = (
 				CF49177EA354D7FC288AF5BB /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -214,14 +214,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = AdminAppTests;
-			productName = AdminAppTests;
-			productReference = 00E356EE1AD99517003FC87E /* AdminAppTests.xctest */;
+			name = SalatTests;
+			productName = SalatTests;
+			productReference = 00E356EE1AD99517003FC87E /* SalatTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* AdminApp */ = {
+		13B07F861A680F5B00A75B9A /* Salat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "AdminApp" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Salat" */;
 			buildPhases = (
 				D2BF31DCEA9D3832F240F9A5 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -235,14 +235,14 @@
 			);
 			dependencies = (
 			);
-			name = AdminApp;
-			productName = AdminApp;
-			productReference = 13B07F961A680F5B00A75B9A /* AdminApp.app */;
+			name = Salat;
+			productName = Salat;
+			productReference = 13B07F961A680F5B00A75B9A /* Salat.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* AdminApp-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* Salat-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AdminApp-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Salat-tvOS" */;
 			buildPhases = (
 				E5BA2E9FCC69E30171C2C74A /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
@@ -255,14 +255,14 @@
 			);
 			dependencies = (
 			);
-			name = "AdminApp-tvOS";
-			productName = "AdminApp-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* AdminApp-tvOS.app */;
+			name = "Salat-tvOS";
+			productName = "Salat-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* Salat-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* AdminApp-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* Salat-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AdminApp-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Salat-tvOSTests" */;
 			buildPhases = (
 				C71B993D52A52B65405D86A8 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -274,9 +274,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "AdminApp-tvOSTests";
-			productName = "AdminApp-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* AdminApp-tvOSTests.xctest */;
+			name = "Salat-tvOSTests";
+			productName = "Salat-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* Salat-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -303,7 +303,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "AdminApp" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Salat" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -317,10 +317,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* AdminApp */,
-				00E356ED1AD99517003FC87E /* AdminAppTests */,
-				2D02E47A1E0B4A5D006451C7 /* AdminApp-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* AdminApp-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* Salat */,
+				00E356ED1AD99517003FC87E /* SalatTests */,
+				2D02E47A1E0B4A5D006451C7 /* Salat-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* Salat-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -394,7 +394,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AdminApp/Pods-AdminApp-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Salat/Pods-Salat-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -433,7 +433,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AdminApp/Pods-AdminApp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Salat/Pods-Salat-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C71B993D52A52B65405D86A8 /* [CP] Check Pods Manifest.lock */ = {
@@ -451,7 +451,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AdminApp-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Salat-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -473,7 +473,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AdminAppTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SalatTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -495,7 +495,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AdminApp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Salat-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -517,7 +517,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AdminApp-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Salat-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -569,7 +569,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* AdminAppTests.m in Sources */,
+				00E356F31AD99517003FC87E /* SalatTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,7 +595,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* AdminAppTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* SalatTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,12 +604,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* AdminApp */;
+			target = 13B07F861A680F5B00A75B9A /* Salat */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* AdminApp-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* Salat-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -621,7 +621,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = AdminApp;
+			path = Salat;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -629,14 +629,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B50D54F2DAFDAA748906A37C /* Pods-AdminAppTests.debug.xcconfig */;
+			baseConfigurationReference = B50D54F2DAFDAA748906A37C /* Pods-SalatTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = AdminAppTests/Info.plist;
+				INFOPLIST_FILE = SalatTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -646,17 +646,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdminApp.app/AdminApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Salat.app/Salat";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F20A28059F5CD1AACA95B65 /* Pods-AdminAppTests.release.xcconfig */;
+			baseConfigurationReference = 7F20A28059F5CD1AACA95B65 /* Pods-SalatTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = AdminAppTests/Info.plist;
+				INFOPLIST_FILE = SalatTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -666,18 +666,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdminApp.app/AdminApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Salat.app/Salat";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6B039935559FD8011CEE30A /* Pods-AdminApp.debug.xcconfig */;
+			baseConfigurationReference = B6B039935559FD8011CEE30A /* Pods-Salat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				INFOPLIST_FILE = AdminApp/Info.plist;
+				INFOPLIST_FILE = Salat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -685,18 +685,18 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = AdminApp;
+				PRODUCT_NAME = Salat;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 07D3A6327B2A82EB59B3E98C /* Pods-AdminApp.release.xcconfig */;
+			baseConfigurationReference = 07D3A6327B2A82EB59B3E98C /* Pods-Salat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = AdminApp/Info.plist;
+				INFOPLIST_FILE = Salat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -704,14 +704,14 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = AdminApp;
+				PRODUCT_NAME = Salat;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F55B0DABB19E7E7BD80EC718 /* Pods-AdminApp-tvOS.debug.xcconfig */;
+			baseConfigurationReference = F55B0DABB19E7E7BD80EC718 /* Pods-Salat-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -722,14 +722,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "AdminApp-tvOS/Info.plist";
+				INFOPLIST_FILE = "Salat-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.AdminApp-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Salat-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -739,7 +739,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18D598CDB0702F1860DACAA5 /* Pods-AdminApp-tvOS.release.xcconfig */;
+			baseConfigurationReference = 18D598CDB0702F1860DACAA5 /* Pods-Salat-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -750,14 +750,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "AdminApp-tvOS/Info.plist";
+				INFOPLIST_FILE = "Salat-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.AdminApp-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Salat-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -767,7 +767,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 86B0D4EA9858B951FCC7AB61 /* Pods-AdminApp-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 86B0D4EA9858B951FCC7AB61 /* Pods-Salat-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -777,24 +777,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "AdminApp-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "Salat-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.AdminApp-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Salat-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdminApp-tvOS.app/AdminApp-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Salat-tvOS.app/Salat-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4546C2FD20468DB9147AC138 /* Pods-AdminApp-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 4546C2FD20468DB9147AC138 /* Pods-Salat-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -804,17 +804,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "AdminApp-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "Salat-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.AdminApp-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Salat-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdminApp-tvOS.app/AdminApp-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Salat-tvOS.app/Salat-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -921,7 +921,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "AdminAppTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SalatTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -930,7 +930,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "AdminApp" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Salat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -939,7 +939,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AdminApp-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Salat-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -948,7 +948,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "AdminApp-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Salat-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -957,7 +957,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "AdminApp" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Salat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "AdminApp-tvOS.app"
-               BlueprintName = "AdminApp-tvOS"
-               ReferencedContainer = "container:AdminApp.xcodeproj">
+               BuildableName = "Salat-tvOS.app"
+               BlueprintName = "Salat-tvOS"
+               ReferencedContainer = "container:Salat.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "AdminApp-tvOSTests.xctest"
-               BlueprintName = "AdminApp-tvOSTests"
-               ReferencedContainer = "container:AdminApp.xcodeproj">
+               BuildableName = "Salat-tvOSTests.xctest"
+               BlueprintName = "Salat-tvOSTests"
+               ReferencedContainer = "container:Salat.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "AdminApp-tvOSTests.xctest"
-               BlueprintName = "AdminApp-tvOSTests"
-               ReferencedContainer = "container:AdminApp.xcodeproj">
+               BuildableName = "Salat-tvOSTests.xctest"
+               BlueprintName = "Salat-tvOSTests"
+               ReferencedContainer = "container:Salat.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "AdminApp-tvOS.app"
-            BlueprintName = "AdminApp-tvOS"
-            ReferencedContainer = "container:AdminApp.xcodeproj">
+            BuildableName = "Salat-tvOS.app"
+            BlueprintName = "Salat-tvOS"
+            ReferencedContainer = "container:Salat.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "AdminApp-tvOS.app"
-            BlueprintName = "AdminApp-tvOS"
-            ReferencedContainer = "container:AdminApp.xcodeproj">
+            BuildableName = "Salat-tvOS.app"
+            BlueprintName = "Salat-tvOS"
+            ReferencedContainer = "container:Salat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "AdminApp-tvOS.app"
-            BlueprintName = "AdminApp-tvOS"
-            ReferencedContainer = "container:AdminApp.xcodeproj">
+            BuildableName = "Salat-tvOS.app"
+            BlueprintName = "Salat-tvOS"
+            ReferencedContainer = "container:Salat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

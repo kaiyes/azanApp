@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'AdminApp' do
-  # Pods for AdminApp
+target 'Salat' do
+  # Pods for Salat
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -34,7 +34,7 @@ target 'AdminApp' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'AdminAppTests' do
+  target 'SalatTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -42,10 +42,10 @@ target 'AdminApp' do
   use_native_modules!
 end
 
-target 'AdminApp-tvOS' do
-  # Pods for AdminApp-tvOS
+target 'Salat-tvOS' do
+  # Pods for Salat-tvOS
 
-  target 'AdminApp-tvOSTests' do
+  target 'Salat-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

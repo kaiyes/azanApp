@@ -1,4 +1,4 @@
-package com.adminapp;
+package com.salat;
 
 import android.app.Application;
 import android.content.Context;
