@@ -17,12 +17,6 @@ import {
 } from 'react-native-responsive-screen'
 import { Icon } from 'react-native-elements'
 import dayjs from 'dayjs'
-import {
-  toDate,
-  closestIndexTo,
-  getTime,
-  parse
-} from 'date-fns'
 import useInterval from '@use-it/interval'
 
 import { findIndex } from 'lodash'
@@ -66,7 +60,7 @@ export default function Today({ navigation }) {
 
   useInterval(() => {
     getHour()
-  }, 10000)
+  }, 2000)
 
   useEffect(() => {
     getTime()
