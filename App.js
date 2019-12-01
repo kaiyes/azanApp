@@ -80,15 +80,51 @@ export default function App() {
     let month = new Date().getMonth()
     let date = new Date().getDate()
     let second = 0
-    let fajr = new Date(year, month, date, 18, 28, second)
-    let dhuhr = new Date(year, month, date, 18, 29, second)
-    let asr = new Date(year, month, date, 18, 30, second)
-    let magr = new Date(year, month, date, 18, 31, second)
-    let isha = new Date(year, month, date, 18, 32, second)
+    let fajr = new Date(
+      year,
+      month,
+      date,
+      dailyTimes[0].split(':')[0],
+      dailyTimes[0].split(':')[1],
+      second
+    )
+    let dhuhr = new Date(
+      year,
+      month,
+      date,
+      dailyTimes[2].split(':')[0],
+      dailyTimes[2].split(':')[1],
+      second
+    )
+    let asr = new Date(
+      year,
+      month,
+      date,
+      dailyTimes[3].split(':')[0],
+      dailyTimes[3].split(':')[1],
+      second
+    )
+    let maghrib = new Date(
+      year,
+      month,
+      date,
+      dailyTimes[4].split(':')[0],
+      dailyTimes[4].split(':')[1],
+      second
+    )
+    let isha = new Date(
+      year,
+      month,
+      date,
+      dailyTimes[5].split(':')[0],
+      dailyTimes[5].split(':')[1],
+      second
+    )
+    console.log(isha)
     scheduleNotification('Fajr', fajr)
     scheduleNotification('Dhuhr', dhuhr)
     scheduleNotification('Asr', asr)
-    scheduleNotification('Isha', magr)
+    scheduleNotification('Isha', maghrib)
     scheduleNotification('Isha', isha)
   }, [])
 
@@ -112,49 +148,14 @@ export default function App() {
 //   let month = new Date().getMonth()
 //   let date = new Date().getDate()
 //   let second = 0
-//   let fajr= new Date(
-//     year,
-//     month,
-//     date,
-//     dailyTimes[0].split(':')[0],
-//     dailyTimes[0].split(':')[1],
-//     second
-//   )
-//   let dhuhr= new Date(
-//     year,
-//     month,
-//     date,
-//     dailyTimes[2].split(':')[0],
-//     dailyTimes[2].split(':')[1],
-//     second
-//   )
-//   let asr= new Date(
-//     year,
-//     month,
-//     date,
-//     dailyTimes[3].split(':')[0],
-//     dailyTimes[3].split(':')[1],
-//     second
-//   )
-//   let maghrib= new Date(
-//     year,
-//     month,
-//     date,
-//     dailyTimes[4].split(':')[0],
-//     dailyTimes[4].split(':')[1],
-//     second
-//   )
-//   let isha= new Date(
-//     year,
-//     month,
-//     date,
-//     dailyTimes[5].split(':')[0],
-//     dailyTimes[5].split(':')[1],
-//     second
-//   )
+//   let fajr = new Date(year, month, date, 18, 28, second)
+//   let dhuhr = new Date(year, month, date, 18, 29, second)
+//   let asr = new Date(year, month, date, 18, 30, second)
+//   let magr = new Date(year, month, date, 18, 31, second)
+//   let isha = new Date(year, month, date, 18, 32, second)
 //   scheduleNotification('Fajr', fajr)
 //   scheduleNotification('Dhuhr', dhuhr)
 //   scheduleNotification('Asr', asr)
-//   scheduleNotification('Isha', maghrib)
+//   scheduleNotification('Isha', magr)
 //   scheduleNotification('Isha', isha)
 // }, [])

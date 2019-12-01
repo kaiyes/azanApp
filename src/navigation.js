@@ -66,10 +66,6 @@ function LoggedInStack() {
     >
       <Tab.Screen name="Today" component={TodayScreen} />
       <Tab.Screen name="Month" component={MonthScreen} />
-      <Tab.Screen
-        name="Settings"
-        component={SettingScreen}
-      />
     </Tab.Navigator>
   )
 }
