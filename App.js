@@ -2,7 +2,7 @@ import React, { Component, useEffect } from 'react'
 import { NavigationNativeContainer } from '@react-navigation/native'
 import useInterval from '@use-it/interval'
 import PushNotification from 'react-native-push-notification'
-import { formatISO } from 'date-fns'
+import { isBefore, isAfter } from 'date-fns'
 
 import Navigator from './src/navigation'
 import Time from './src/utility/helsingborg'
@@ -84,48 +84,78 @@ export default function App() {
       year,
       month,
       date,
-      dailyTimes[0].split(':')[0],
-      dailyTimes[0].split(':')[1],
+      // dailyTimes[0].split(':')[0],
+      // dailyTimes[0].split(':')[1],
+      10,
+      15,
       second
     )
     let dhuhr = new Date(
       year,
       month,
       date,
-      dailyTimes[2].split(':')[0],
-      dailyTimes[2].split(':')[1],
+      // dailyTimes[2].split(':')[0],
+      // dailyTimes[2].split(':')[1],
+      10,
+      15,
       second
     )
     let asr = new Date(
       year,
       month,
       date,
-      dailyTimes[3].split(':')[0],
-      dailyTimes[3].split(':')[1],
+      // dailyTimes[3].split(':')[0],
+      // dailyTimes[3].split(':')[1],
+      10,
+      16,
       second
     )
     let maghrib = new Date(
       year,
       month,
       date,
-      dailyTimes[4].split(':')[0],
-      dailyTimes[4].split(':')[1],
+      // dailyTimes[4].split(':')[0],
+      // dailyTimes[4].split(':')[1],
+      10,
+      17,
       second
     )
     let isha = new Date(
       year,
       month,
       date,
-      dailyTimes[5].split(':')[0],
-      dailyTimes[5].split(':')[1],
+      // dailyTimes[5].split(':')[0],
+      // dailyTimes[5].split(':')[1],
+      10,
+      19,
       second
     )
-    console.log(isha)
-    scheduleNotification('Fajr', fajr)
-    scheduleNotification('Dhuhr', dhuhr)
-    scheduleNotification('Asr', asr)
-    scheduleNotification('Isha', maghrib)
-    scheduleNotification('Isha', isha)
+    // && !isAfter(new Date(), dhuhr)
+    if (isBefore(new Date(), fajr)) {
+      scheduleNotification('Fajr', fajr) &&
+        scheduleNotification('Dhuhr', dhuhr) &&
+        scheduleNotification('Asr', asr) &&
+        scheduleNotification('Maghrib', maghrib) &&
+        scheduleNotification('Isha', isha)
+    }
+    if (isBefore(new Date(), dhuhr)) {
+      scheduleNotification('Dhuhr', dhuhr) &&
+        scheduleNotification('Asr', asr) &&
+        scheduleNotification('Maghrib', maghrib) &&
+        scheduleNotification('Isha', isha)
+    }
+    if (isBefore(new Date(), asr)) {
+      scheduleNotification('Asr', asr) &&
+        scheduleNotification('Maghrib', maghrib) &&
+        scheduleNotification('Isha', isha)
+    }
+    if (isBefore(new Date(), maghrib)) {
+      scheduleNotification('Maghrib', maghrib) &&
+        scheduleNotification('Isha', isha)
+    }
+    if (isBefore(new Date(), isha)) {
+      scheduleNotification('Isha', isha)
+    }
   }, [])
 
   return (
