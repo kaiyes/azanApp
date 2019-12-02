@@ -2,7 +2,7 @@ import React, { Component, useEffect } from 'react'
 import { NavigationNativeContainer } from '@react-navigation/native'
 import useInterval from '@use-it/interval'
 import PushNotification from 'react-native-push-notification'
-import { isBefore, isAfter } from 'date-fns'
+import { isBefore, subMinutes } from 'date-fns'
 
 import Navigator from './src/navigation'
 import Time from './src/utility/helsingborg'
@@ -58,18 +58,18 @@ export default function App() {
     })
   }
 
-  function scheduleNotification(salahName, salahTime) {
+  function scheduleNotification(salahName, salahTime, x) {
     PushNotification.localNotificationSchedule({
       date: salahTime,
       title: `${salahName} Salah`,
-      message: '5 minutes to Salah',
+      message: `${x} minutes to Salah`,
       playSound: true,
       soundName: 'default'
     })
   }
 
-  useEffect(async () => {
-    let monthlyTime = await Time.filter(item => {
+  function timer() {
+    let monthlyTime = Time.filter(item => {
       return (
         item[0] == new Date().getMonth() + 1 &&
         item[1] == new Date().getDate()
@@ -96,8 +96,8 @@ export default function App() {
       date,
       // dailyTimes[2].split(':')[0],
       // dailyTimes[2].split(':')[1],
-      10,
-      15,
+      11,
+      26,
       second
     )
     let asr = new Date(
@@ -106,16 +106,18 @@ export default function App() {
       date,
       // dailyTimes[3].split(':')[0],
       // dailyTimes[3].split(':')[1],
-      10,
-      16,
+      11,
+      33,
       second
     )
     let maghrib = new Date(
       year,
       month,
       date,
-      dailyTimes[4].split(':')[0],
-      dailyTimes[4].split(':')[1],
+      // dailyTimes[4].split(':')[0],
+      // dailyTimes[4].split(':')[1],
+      11,
+      34,
       second
     )
     let isha = new Date(
@@ -124,36 +126,40 @@ export default function App() {
       date,
       // dailyTimes[5].split(':')[0],
       // dailyTimes[5].split(':')[1],
-      10,
-      19,
+      11,
+      35,
       second
     )
-    // && !isAfter(new Date(), dhuhr)
-    if (isBefore(new Date(), fajr)) {
-      scheduleNotification('Fajr', fajr) &&
-        scheduleNotification('Dhuhr', dhuhr) &&
-        scheduleNotification('Asr', asr) &&
-        scheduleNotification('Maghrib', maghrib) &&
-        scheduleNotification('Isha', isha)
+    let x = 2
+    if (isBefore(new Date(), subMinutes(fajr, x))) {
+      scheduleNotification('Fajr', fajr, x) &&
+        scheduleNotification('Dhuhr', dhuhr, x) &&
+        scheduleNotification('Asr', asr, x) &&
+        scheduleNotification('Maghrib', maghrib, x) &&
+        scheduleNotification('Isha', isha, x)
     }
-    if (isBefore(new Date(), dhuhr)) {
-      scheduleNotification('Dhuhr', dhuhr) &&
-        scheduleNotification('Asr', asr) &&
-        scheduleNotification('Maghrib', maghrib) &&
-        scheduleNotification('Isha', isha)
+    if (isBefore(new Date(), subMinutes(dhuhr, x))) {
+      scheduleNotification('Dhuhr', dhuhr, x) &&
+        scheduleNotification('Asr', asr, x) &&
+        scheduleNotification('Maghrib', maghrib, x) &&
+        scheduleNotification('Isha', isha, x)
     }
-    if (isBefore(new Date(), asr)) {
-      scheduleNotification('Asr', asr) &&
-        scheduleNotification('Maghrib', maghrib) &&
-        scheduleNotification('Isha', isha)
+    if (isBefore(new Date(), subMinutes(asr, x))) {
+      scheduleNotification('Asr', asr, x) &&
+        scheduleNotification('Maghrib', maghrib, x) &&
+        scheduleNotification('Isha', isha, x)
     }
-    if (isBefore(new Date(), maghrib)) {
-      scheduleNotification('Maghrib', maghrib) &&
-        scheduleNotification('Isha', isha)
+    if (isBefore(new Date(), subMinutes(maghrib, x))) {
+      scheduleNotification('Maghrib', maghrib, x) &&
+        scheduleNotification('Isha', isha, x)
     }
-    if (isBefore(new Date(), isha)) {
-      scheduleNotification('Isha', isha)
+    if (isBefore(new Date(), subMinutes(isha, x))) {
+      scheduleNotification('Isha', isha, x)
     }
+  }
+
+  useEffect(() => {
+    timer()
   }, [])
 
   return (
