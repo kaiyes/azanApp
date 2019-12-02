@@ -114,10 +114,8 @@ export default function App() {
       year,
       month,
       date,
-      // dailyTimes[4].split(':')[0],
-      // dailyTimes[4].split(':')[1],
-      10,
-      17,
+      dailyTimes[4].split(':')[0],
+      dailyTimes[4].split(':')[1],
       second
     )
     let isha = new Date(
