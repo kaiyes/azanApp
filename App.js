@@ -2,7 +2,7 @@ import React, { Component, useEffect } from 'react'
 import { NavigationNativeContainer } from '@react-navigation/native'
 import useInterval from '@use-it/interval'
 import PushNotification from 'react-native-push-notification'
-import { isBefore, isAfter } from 'date-fns'
+import { isBefore, subMinutes } from 'date-fns'
 
 import Navigator from './src/navigation'
 import Time from './src/utility/helsingborg'
@@ -86,8 +86,8 @@ export default function App() {
       date,
       // dailyTimes[0].split(':')[0],
       // dailyTimes[0].split(':')[1],
-      10,
-      15,
+      12,
+      31,
       second
     )
     let dhuhr = new Date(
@@ -96,8 +96,8 @@ export default function App() {
       date,
       // dailyTimes[2].split(':')[0],
       // dailyTimes[2].split(':')[1],
-      10,
-      15,
+      12,
+      21,
       second
     )
     let asr = new Date(
@@ -106,16 +106,18 @@ export default function App() {
       date,
       // dailyTimes[3].split(':')[0],
       // dailyTimes[3].split(':')[1],
-      10,
-      16,
+      12,
+      22,
       second
     )
     let maghrib = new Date(
       year,
       month,
       date,
-      dailyTimes[4].split(':')[0],
-      dailyTimes[4].split(':')[1],
+      // dailyTimes[4].split(':')[0],
+      // dailyTimes[4].split(':')[1],
+      12,
+      23,
       second
     )
     let isha = new Date(
@@ -124,8 +126,8 @@ export default function App() {
       date,
       // dailyTimes[5].split(':')[0],
       // dailyTimes[5].split(':')[1],
-      10,
-      19,
+      12,
+      32,
       second
     )
     // && !isAfter(new Date(), dhuhr)
