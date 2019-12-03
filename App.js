@@ -107,8 +107,8 @@ export default function App() {
       date,
       // dailyTimes[2].split(':')[0],
       // dailyTimes[2].split(':')[1],
-      8,
-      12,
+      9,
+      14,
       second
     )
     let asr = new Date(
@@ -117,8 +117,8 @@ export default function App() {
       date,
       // dailyTimes[3].split(':')[0],
       // dailyTimes[3].split(':')[1],
-      8,
-      47,
+      9,
+      26,
       second
     )
     let maghrib = new Date(
@@ -127,8 +127,8 @@ export default function App() {
       date,
       // dailyTimes[4].split(':')[0],
       // dailyTimes[4].split(':')[1],
-      8,
-      48,
+      9,
+      34,
       second
     )
     let isha = new Date(
@@ -137,60 +137,35 @@ export default function App() {
       date,
       // dailyTimes[5].split(':')[0],
       // dailyTimes[5].split(':')[1],
-      8,
-      49,
+      9,
+      35,
       second
     )
 
-    if (
-      !(
-        isBefore(new Date(), fajr) &&
-        !isAfter(new Date(), dhuhr)
-      )
-    ) {
-      return (
-        setSchedule('Fajr', fajr) &&
-        setSchedule('Dhuhr', dhuhr) &&
-        setSchedule('Asr', asr) &&
-        setSchedule('Maghrib', maghrib) &&
-        setSchedule('Isha', isha)
-      )
+    if (isBefore(new Date(), fajr)) {
+      ;(await setSchedule('Fajr', fajr)) &&
+        (await setSchedule('Dhuhr', dhuhr)) &&
+        (await setSchedule('Asr', asr)) &&
+        (await setSchedule('Maghrib', maghrib)) &&
+        (await setSchedule('Isha', isha))
     }
-    if (
-      !(
-        isBefore(new Date(), dhuhr) &&
-        !isAfter(new Date(), asr)
-      )
-    ) {
-      return
-      setSchedule('Dhuhr', dhuhr) &&
-        setSchedule('Asr', asr) &&
-        setSchedule('Maghrib', maghrib) &&
-        setSchedule('Isha', isha)
+    if (isBefore(new Date(), dhuhr)) {
+      ;(await setSchedule('Dhuhr', dhuhr)) &&
+        (await setSchedule('Asr', asr)) &&
+        (await setSchedule('Maghrib', maghrib)) &&
+        (await setSchedule('Isha', isha))
     }
-    if (
-      !(
-        isBefore(new Date(), asr) &&
-        !isAfter(new Date(), maghrib)
-      )
-    ) {
-      return
-      setSchedule('Asr', asr) &&
-        setSchedule('Maghrib', maghrib) &&
-        setSchedule('Isha', isha)
+    if (isBefore(new Date(), asr)) {
+      ;(await setSchedule('Asr', asr)) &&
+        (await setSchedule('Maghrib', maghrib)) &&
+        (await setSchedule('Isha', isha))
     }
-    if (
-      !(
-        isBefore(new Date(), maghrib) &&
-        !isAfter(new Date(), isha)
-      )
-    ) {
-      return
-      setSchedule('Maghrib', maghrib) &&
-        setSchedule('Isha', isha)
+    if (isBefore(new Date(), maghrib)) {
+      ;(await setSchedule('Maghrib', maghrib)) &&
+        (await setSchedule('Isha', isha))
     }
-    if (!isBefore(new Date(), isha)) {
-      return setSchedule('Isha', isha)
+    if (isBefore(new Date(), isha)) {
+      await setSchedule('Isha', isha)
     }
   }
 
