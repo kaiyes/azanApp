@@ -2,7 +2,8 @@ import React, { Component, useEffect } from 'react'
 import { NavigationNativeContainer } from '@react-navigation/native'
 import useInterval from '@use-it/interval'
 import PushNotification from 'react-native-push-notification'
-import { isBefore, subMinutes } from 'date-fns'
+import { isBefore, isAfter, subMinutes } from 'date-fns'
+import AsyncStorage from '@react-native-community/async-storage'
 
 import Navigator from './src/navigation'
 import Time from './src/utility/helsingborg'
@@ -68,7 +69,17 @@ export default function App() {
     })
   }
 
-  useEffect(async () => {
+  async function setSchedule(salahName, salahTime) {
+    const value = await AsyncStorage.getItem(
+      `@${salahName}`
+    )
+    if (value == null) {
+      await AsyncStorage.setItem(`@${salahName}`, 'set')
+      scheduleNotification(salahName, salahTime)
+    }
+  }
+
+  async function setTimer() {
     let monthlyTime = await Time.filter(item => {
       return (
         item[0] == new Date().getMonth() + 1 &&
@@ -86,8 +97,8 @@ export default function App() {
       date,
       // dailyTimes[0].split(':')[0],
       // dailyTimes[0].split(':')[1],
-      12,
-      31,
+      7,
+      17,
       second
     )
     let dhuhr = new Date(
@@ -96,8 +107,8 @@ export default function App() {
       date,
       // dailyTimes[2].split(':')[0],
       // dailyTimes[2].split(':')[1],
+      8,
       12,
-      21,
       second
     )
     let asr = new Date(
@@ -106,8 +117,8 @@ export default function App() {
       date,
       // dailyTimes[3].split(':')[0],
       // dailyTimes[3].split(':')[1],
-      12,
-      22,
+      8,
+      47,
       second
     )
     let maghrib = new Date(
@@ -116,8 +127,8 @@ export default function App() {
       date,
       // dailyTimes[4].split(':')[0],
       // dailyTimes[4].split(':')[1],
-      12,
-      23,
+      8,
+      48,
       second
     )
     let isha = new Date(
@@ -126,37 +137,162 @@ export default function App() {
       date,
       // dailyTimes[5].split(':')[0],
       // dailyTimes[5].split(':')[1],
-      12,
-      32,
+      8,
+      49,
       second
     )
-    // && !isAfter(new Date(), dhuhr)
-    if (isBefore(new Date(), fajr)) {
-      scheduleNotification('Fajr', fajr) &&
-        scheduleNotification('Dhuhr', dhuhr) &&
-        scheduleNotification('Asr', asr) &&
-        scheduleNotification('Maghrib', maghrib) &&
-        scheduleNotification('Isha', isha)
+
+    if (
+      !(
+        isBefore(new Date(), fajr) &&
+        !isAfter(new Date(), dhuhr)
+      )
+    ) {
+      return (
+        setSchedule('Fajr', fajr) &&
+        setSchedule('Dhuhr', dhuhr) &&
+        setSchedule('Asr', asr) &&
+        setSchedule('Maghrib', maghrib) &&
+        setSchedule('Isha', isha)
+      )
     }
-    if (isBefore(new Date(), dhuhr)) {
-      scheduleNotification('Dhuhr', dhuhr) &&
-        scheduleNotification('Asr', asr) &&
-        scheduleNotification('Maghrib', maghrib) &&
-        scheduleNotification('Isha', isha)
+    if (
+      !(
+        isBefore(new Date(), dhuhr) &&
+        !isAfter(new Date(), asr)
+      )
+    ) {
+      return
+      setSchedule('Dhuhr', dhuhr) &&
+        setSchedule('Asr', asr) &&
+        setSchedule('Maghrib', maghrib) &&
+        setSchedule('Isha', isha)
     }
-    if (isBefore(new Date(), asr)) {
-      scheduleNotification('Asr', asr) &&
-        scheduleNotification('Maghrib', maghrib) &&
-        scheduleNotification('Isha', isha)
+    if (
+      !(
+        isBefore(new Date(), asr) &&
+        !isAfter(new Date(), maghrib)
+      )
+    ) {
+      return
+      setSchedule('Asr', asr) &&
+        setSchedule('Maghrib', maghrib) &&
+        setSchedule('Isha', isha)
     }
-    if (isBefore(new Date(), maghrib)) {
-      scheduleNotification('Maghrib', maghrib) &&
-        scheduleNotification('Isha', isha)
+    if (
+      !(
+        isBefore(new Date(), maghrib) &&
+        !isAfter(new Date(), isha)
+      )
+    ) {
+      return
+      setSchedule('Maghrib', maghrib) &&
+        setSchedule('Isha', isha)
     }
-    if (isBefore(new Date(), isha)) {
-      scheduleNotification('Isha', isha)
+    if (!isBefore(new Date(), isha)) {
+      return setSchedule('Isha', isha)
     }
+  }
+
+  useEffect(() => {
+    setTimer()
   }, [])
+
+  // useInterval(async () => {
+  //   console.log(
+  //     'getFirstTime: ',
+  //     await AsyncStorage.multiGet([
+  //       '@Fajr',
+  //       '@Dhuhr',
+  //       '@Asr',
+  //       '@Maghrib',
+  //       '@Isha'
+  //     ])
+  //   )
+  //   await AsyncStorage.multiRemove([
+  //     '@Fajr',
+  //     '@Dhuhr',
+  //     '@Asr',
+  //     '@Maghrib',
+  //     '@Isha'
+  //   ])
+  //   console.log(
+  //     'getAfterRemoval: ',
+  //     await AsyncStorage.multiGet([
+  //       '@Fajr',
+  //       '@Dhuhr',
+  //       '@Asr',
+  //       '@Maghrib',
+  //       '@Isha'
+  //     ])
+  //   )
+  // }, 2000)
+
+  // useInterval(async () => {
+  //   console.log(
+  //     'getstorage: ',
+  //     await AsyncStorage.multiGet([
+  //       '@Fajr',
+  //       '@Dhuhr',
+  //       '@Asr',
+  //       '@Maghrib',
+  //       '@Isha'
+  //     ])
+  //   )
+  // }, 2000)
+
+  // useInterval(async () => {
+  //   let year = new Date().getFullYear()
+  //   let month = new Date().getMonth()
+  //   let date = new Date().getDate()
+  //   let second = 0
+  //   let fajr = new Date(
+  //     year,
+  //     month,
+  //     date,
+  //     // dailyTimes[0].split(':')[0],
+  //     // dailyTimes[0].split(':')[1],
+  //     7,
+  //     17,
+  //     second
+  //   )
+  //   let dhuhr = new Date(
+  //     year,
+  //     month,
+  //     date,
+  //     // dailyTimes[2].split(':')[0],
+  //     // dailyTimes[2].split(':')[1],
+  //     7,
+  //     46,
+  //     second
+  //   )
+  //   let asr = new Date(
+  //     year,
+  //     month,
+  //     date,
+  //     // dailyTimes[3].split(':')[0],
+  //     // dailyTimes[3].split(':')[1],
+  //     7,
+  //     48,
+  //     second
+  //   )
+  //   let maghrib = new Date(
+  //     year,
+  //     month,
+  //     date,
+  //     // dailyTimes[4].split(':')[0],
+  //     // dailyTimes[4].split(':')[1],
+  //     7,
+  //     50,
+  //     second
+  //   )
+  //   console.log(
+  //     !(
+  //       isBefore(new Date(), asr) &&
+  //       !isAfter(new Date(), maghrib)
+  //     )
+  //   )
+  // }, 2000)
 
   return (
     <NavigationNativeContainer>
@@ -164,28 +300,3 @@ export default function App() {
     </NavigationNativeContainer>
   )
 }
-
-//
-// useEffect(async () => {
-//   let monthlyTime = await Time.filter(item => {
-//     return (
-//       item[0] == new Date().getMonth() + 1 &&
-//       item[1] == new Date().getDate()
-//     )
-//   })
-//   let dailyTimes = monthlyTime[0].slice(2)
-//   let year = new Date().getFullYear()
-//   let month = new Date().getMonth()
-//   let date = new Date().getDate()
-//   let second = 0
-//   let fajr = new Date(year, month, date, 18, 28, second)
-//   let dhuhr = new Date(year, month, date, 18, 29, second)
-//   let asr = new Date(year, month, date, 18, 30, second)
-//   let magr = new Date(year, month, date, 18, 31, second)
-//   let isha = new Date(year, month, date, 18, 32, second)
-//   scheduleNotification('Fajr', fajr)
-//   scheduleNotification('Dhuhr', dhuhr)
-//   scheduleNotification('Asr', asr)
-//   scheduleNotification('Isha', magr)
-//   scheduleNotification('Isha', isha)
-// }, [])
