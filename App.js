@@ -95,50 +95,40 @@ export default function App() {
       year,
       month,
       date,
-      // dailyTimes[0].split(':')[0],
-      // dailyTimes[0].split(':')[1],
-      7,
-      17,
+      dailyTimes[0].split(':')[0],
+      dailyTimes[0].split(':')[1],
       second
     )
     let dhuhr = new Date(
       year,
       month,
       date,
-      // dailyTimes[2].split(':')[0],
-      // dailyTimes[2].split(':')[1],
-      9,
-      14,
+      dailyTimes[2].split(':')[0],
+      dailyTimes[2].split(':')[1],
       second
     )
     let asr = new Date(
       year,
       month,
       date,
-      // dailyTimes[3].split(':')[0],
-      // dailyTimes[3].split(':')[1],
-      9,
-      26,
+      dailyTimes[3].split(':')[0],
+      dailyTimes[3].split(':')[1],
       second
     )
     let maghrib = new Date(
       year,
       month,
       date,
-      // dailyTimes[4].split(':')[0],
-      // dailyTimes[4].split(':')[1],
-      9,
-      34,
+      dailyTimes[4].split(':')[0],
+      dailyTimes[4].split(':')[1],
       second
     )
     let isha = new Date(
       year,
       month,
       date,
-      // dailyTimes[5].split(':')[0],
-      // dailyTimes[5].split(':')[1],
-      9,
-      35,
+      dailyTimes[5].split(':')[0],
+      dailyTimes[5].split(':')[1],
       second
     )
 
