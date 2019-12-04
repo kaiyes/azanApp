@@ -6,8 +6,12 @@ import {
   isBefore,
   subMinutes,
   isToday,
+  isMonday,
+  isWednesday,
   addDays,
-  lightFormat
+  lightFormat,
+  toDate,
+  format
 } from 'date-fns'
 import AsyncStorage from '@react-native-community/async-storage'
 
@@ -73,14 +77,14 @@ export default function App() {
     return subMinutes(salahTime, 5)
   }
 
-  async function setTimer() {
-    let monthlyTimes = await Time.filter(item => {
+  async function setTimerMonday() {
+    let dailyTimes = await Time.filter(item => {
       return (
         item[0] == new Date().getMonth() + 1 &&
         item[1] == new Date().getDate()
       )
     })
-    let dailyTimes = monthlyTimes[0].slice(2)
+    let fiveSalah = dailyTimes[0].slice(2)
     let year = new Date().getFullYear()
     let month = new Date().getMonth()
     let date = new Date().getDate()
@@ -89,8 +93,8 @@ export default function App() {
       year,
       month,
       date,
-      // dailyTimes[0].split(':')[0],
-      // dailyTimes[0].split(':')[1],
+      // fiveSalah[0].split(':')[0],
+      // fiveSalah[0].split(':')[1],
       11,
       20,
       second
@@ -99,8 +103,8 @@ export default function App() {
       year,
       month,
       date,
-      // dailyTimes[2].split(':')[0],
-      // dailyTimes[2].split(':')[1],
+      // fiveSalah[2].split(':')[0],
+      // fiveSalah[2].split(':')[1],
       11,
       21,
       second
@@ -109,30 +113,38 @@ export default function App() {
       year,
       month,
       date,
-      // dailyTimes[3].split(':')[0],
-      // dailyTimes[3].split(':')[1],
-      12,
-      22,
+      // fiveSalah[3].split(':')[0],
+      // fiveSalah[3].split(':')[1],
+      16,
+      48,
       second
     )
     let maghrib = new Date(
       year,
       month,
       date,
-      dailyTimes[4].split(':')[0],
-      dailyTimes[4].split(':')[1],
+      fiveSalah[4].split(':')[0],
+      fiveSalah[4].split(':')[1],
       second
     )
     let isha = new Date(
       year,
       month,
       date,
-      // dailyTimes[5].split(':')[0],
-      // dailyTimes[5].split(':')[1],
-      12,
-      25,
+      // fiveSalah[5].split(':')[0],
+      // fiveSalah[5].split(':')[1],
+      16,
+      52,
       second
     )
+
+    await AsyncStorage.multiRemove([
+      '@Fajr',
+      '@Dhuhr',
+      '@Asr',
+      '@Maghrib',
+      '@Isha'
+    ])
 
     if (isBefore(new Date(), fajr)) {
       ;(await setSchedule('Fajr', setDelay(fajr))) &&
@@ -161,45 +173,38 @@ export default function App() {
     }
   }
 
-  async function removeLocalData() {
-    await AsyncStorage.multiRemove([
-      '@Fajr',
-      '@Dhuhr',
-      '@Asr',
-      '@Maghrib',
-      '@Isha'
-    ])
-  }
-
-  async function setToday() {
+  async function setNextFlushDay() {
     let date = lightFormat(new Date(), 'yyyy-MM-dd')
-    await AsyncStorage.setItem(`@today`, `${date}`)
+    await AsyncStorage.setItem(`@flushDay`, `${date}`)
   }
 
-  async function checkIfToday() {
-    let date = await AsyncStorage.getItem(`@today`)
+  async function sameMonday() {
+    let date = await AsyncStorage.getItem(`@flushDay`)
     let today = lightFormat(new Date(), 'yyyy-MM-dd')
-    return date === today
+    return date == today
   }
 
-  useEffect(async () => {
-    // await removeLocalData()
-    // PushNotification.cancelAllLocalNotifications()
-    // await setTimer()
-    console.log(await checkIfToday())
-  }, [])
+  async function setWeeklyTimer() {}
+
+  async function setWeeklyNotifi() {
+    if (isWednesday(new Date())) {
+      if ((await sameMonday()) === false) {
+        console.log('finally called')
+        // await setTimerMonday()
+        // let setNextFlushDay = addDays(new Date(), 7)
+        // console.log(sameMonday())
+        // console.log(!sameMonday())
+      }
+      //await PushNotification.cancelAllLocalNotifications()
+    }
+  }
+
+  // useEffect(async () => {
+  //   await setWeeklyNotifi()
+  // }, [])
 
   // useInterval(async () => {
-  //   console.log(
-  //     'getstorage: ',
-  //     await AsyncStorage.multiGet([
-  //       '@Fajr',
-  //       '@Dhuhr',
-  //       '@Asr',
-  //       '@Maghrib',
-  //       '@Isha'
-  //     ])
-  //   )
+  //   setWeeklyNotifi()
   // }, 2000)
 
   return (
@@ -208,3 +213,16 @@ export default function App() {
     </NavigationNativeContainer>
   )
 }
+
+//is it monday ?
+//      yeah it is.                      // no this ain't monday
+//      okay then                                   Do fuckAll
+//          |
+//   ---------------------
+//   |                   |
+//  is it the           Do fuckAll
+//  same monday
+//        |
+// ----------------
+// |              |
+// Do fuckAll     run daily Timer() & weekly timer()
