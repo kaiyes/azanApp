@@ -60,9 +60,15 @@ export default function App() {
   })
 
   async function setSchedule(salahName, salahTime) {
-    const value = await AsyncStorage.getItem(`@hasBeenSet`)
+    let date = lightFormat(new Date(), 'yyyy-MM-dd')
+    const value = await AsyncStorage.getItem(
+      `@${salahName}-${date}`
+    )
     if (value == null) {
-      await AsyncStorage.setItem(`@${salahName}`, 'set')
+      await AsyncStorage.setItem(
+        `@${salahName}-${date}`,
+        'set'
+      )
       PushNotification.localNotificationSchedule({
         date: salahTime,
         title: `${salahName} Salah`,
@@ -77,7 +83,7 @@ export default function App() {
     return subMinutes(salahTime, 5)
   }
 
-  async function setTimerMonday() {
+  async function setTimer() {
     let dailyTimes = await Time.filter(item => {
       return (
         item[0] == new Date().getMonth() + 1 &&
@@ -93,30 +99,24 @@ export default function App() {
       year,
       month,
       date,
-      // fiveSalah[0].split(':')[0],
-      // fiveSalah[0].split(':')[1],
-      11,
-      20,
+      fiveSalah[0].split(':')[0],
+      fiveSalah[0].split(':')[1],
       second
     )
     let dhuhr = new Date(
       year,
       month,
       date,
-      // fiveSalah[2].split(':')[0],
-      // fiveSalah[2].split(':')[1],
-      11,
-      21,
+      fiveSalah[2].split(':')[0],
+      fiveSalah[2].split(':')[1],
       second
     )
     let asr = new Date(
       year,
       month,
       date,
-      // fiveSalah[3].split(':')[0],
-      // fiveSalah[3].split(':')[1],
-      16,
-      48,
+      fiveSalah[3].split(':')[0],
+      fiveSalah[3].split(':')[1],
       second
     )
     let maghrib = new Date(
@@ -131,20 +131,10 @@ export default function App() {
       year,
       month,
       date,
-      // fiveSalah[5].split(':')[0],
-      // fiveSalah[5].split(':')[1],
-      16,
-      52,
+      fiveSalah[5].split(':')[0],
+      fiveSalah[5].split(':')[1],
       second
     )
-
-    await AsyncStorage.multiRemove([
-      '@Fajr',
-      '@Dhuhr',
-      '@Asr',
-      '@Maghrib',
-      '@Isha'
-    ])
 
     if (isBefore(new Date(), fajr)) {
       ;(await setSchedule('Fajr', setDelay(fajr))) &&
@@ -174,37 +164,43 @@ export default function App() {
   }
 
   async function setNextFlushDay() {
-    let date = lightFormat(new Date(), 'yyyy-MM-dd')
-    await AsyncStorage.setItem(`@flushDay`, `${date}`)
+    let flushDay = lightFormat(
+      addDays(new Date(), 1),
+      'yyyy-MM-dd'
+    )
+    await AsyncStorage.setItem(`@flushDay`, `${flushDay}`)
   }
 
-  async function sameMonday() {
-    let date = await AsyncStorage.getItem(`@flushDay`)
+  async function onReachingNextDay() {
     let today = lightFormat(new Date(), 'yyyy-MM-dd')
-    return date == today
-  }
-
-  async function setWeeklyTimer() {}
-
-  async function setWeeklyNotifi() {
-    if (isWednesday(new Date())) {
-      if ((await sameMonday()) === false) {
-        console.log('finally called')
-        // await setTimerMonday()
-        // let setNextFlushDay = addDays(new Date(), 7)
-        // console.log(sameMonday())
-        // console.log(!sameMonday())
-      }
-      //await PushNotification.cancelAllLocalNotifications()
+    let flushDay = await AsyncStorage.getItem(`@flushDay`)
+    console.log(today, flushDay)
+    if (today === flushDay) {
+      await setTimer()
+      await setNextFlushDay()
     }
   }
 
-  // useEffect(async () => {
-  //   await setWeeklyNotifi()
-  // }, [])
+  async function removeLocalData(date) {
+    await AsyncStorage.multiRemove([
+      `@Fajr-${date}`,
+      `@Dhuhr-${date}`,
+      `@Asr-${date}`,
+      `@Maghrib-${date}`,
+      `@Isha-${date}`
+    ])
+  }
+
+  useEffect(async () => {
+    await setTimer()
+    await onReachingNextDay()
+  }, [])
 
   // useInterval(async () => {
-  //   setWeeklyNotifi()
+  //   AsyncStorage.clear()
+  //   await PushNotification.cancelAllLocalNotifications()
+  //   let today = lightFormat(new Date(), 'yyyy-MM-dd')
+  //   console.log(today)
   // }, 2000)
 
   return (
@@ -216,13 +212,13 @@ export default function App() {
 
 //is it monday ?
 //      yeah it is.                      // no this ain't monday
-//      okay then                                   Do fuckAll
+//      okay then                                   Do Nothing
 //          |
 //   ---------------------
 //   |                   |
-//  is it the           Do fuckAll
+//  is it the           Do Nothing
 //  same monday
 //        |
 // ----------------
 // |              |
-// Do fuckAll     run daily Timer() & weekly timer()
+// Do Nothing     run daily Timer() & weekly timer()
