@@ -2,7 +2,13 @@ import React, { Component, useEffect } from 'react'
 import { NavigationNativeContainer } from '@react-navigation/native'
 import useInterval from '@use-it/interval'
 import PushNotification from 'react-native-push-notification'
-import { isBefore, isAfter, subMinutes } from 'date-fns'
+import {
+  isBefore,
+  subMinutes,
+  isToday,
+  addDays,
+  lightFormat
+} from 'date-fns'
 import AsyncStorage from '@react-native-community/async-storage'
 
 import Navigator from './src/navigation'
@@ -50,9 +56,7 @@ export default function App() {
   })
 
   async function setSchedule(salahName, salahTime) {
-    const value = await AsyncStorage.getItem(
-      `@${salahName}`
-    )
+    const value = await AsyncStorage.getItem(`@hasBeenSet`)
     if (value == null) {
       await AsyncStorage.setItem(`@${salahName}`, 'set')
       PushNotification.localNotificationSchedule({
@@ -70,13 +74,13 @@ export default function App() {
   }
 
   async function setTimer() {
-    let monthlyTime = await Time.filter(item => {
+    let monthlyTimes = await Time.filter(item => {
       return (
         item[0] == new Date().getMonth() + 1 &&
         item[1] == new Date().getDate()
       )
     })
-    let dailyTimes = monthlyTime[0].slice(2)
+    let dailyTimes = monthlyTimes[0].slice(2)
     let year = new Date().getFullYear()
     let month = new Date().getMonth()
     let date = new Date().getDate()
@@ -107,7 +111,7 @@ export default function App() {
       date,
       // dailyTimes[3].split(':')[0],
       // dailyTimes[3].split(':')[1],
-      11,
+      12,
       22,
       second
     )
@@ -125,9 +129,8 @@ export default function App() {
       date,
       // dailyTimes[5].split(':')[0],
       // dailyTimes[5].split(':')[1],
-
-      11,
-      32,
+      12,
+      25,
       second
     )
 
@@ -167,40 +170,24 @@ export default function App() {
       '@Isha'
     ])
   }
-  useEffect(async () => {
-    await removeLocalData()
-    await setTimer()
-  }, [])
 
-  // useInterval(async () => {
-  //   console.log(
-  //     'getFirstTime: ',
-  //     await AsyncStorage.multiGet([
-  //       '@Fajr',
-  //       '@Dhuhr',
-  //       '@Asr',
-  //       '@Maghrib',
-  //       '@Isha'
-  //     ])
-  //   )
-  //   await AsyncStorage.multiRemove([
-  //     '@Fajr',
-  //     '@Dhuhr',
-  //     '@Asr',
-  //     '@Maghrib',
-  //     '@Isha'
-  //   ])
-  //   console.log(
-  //     'getAfterRemoval: ',
-  //     await AsyncStorage.multiGet([
-  //       '@Fajr',
-  //       '@Dhuhr',
-  //       '@Asr',
-  //       '@Maghrib',
-  //       '@Isha'
-  //     ])
-  //   )
-  // }, 2000)
+  async function setToday() {
+    let date = lightFormat(new Date(), 'yyyy-MM-dd')
+    await AsyncStorage.setItem(`@today`, `${date}`)
+  }
+
+  async function checkIfToday() {
+    let date = await AsyncStorage.getItem(`@today`)
+    let today = lightFormat(new Date(), 'yyyy-MM-dd')
+    return date === today
+  }
+
+  useEffect(async () => {
+    // await removeLocalData()
+    // PushNotification.cancelAllLocalNotifications()
+    // await setTimer()
+    console.log(await checkIfToday())
+  }, [])
 
   // useInterval(async () => {
   //   console.log(
@@ -212,59 +199,6 @@ export default function App() {
   //       '@Maghrib',
   //       '@Isha'
   //     ])
-  //   )
-  // }, 2000)
-
-  // useInterval(async () => {
-  //   let year = new Date().getFullYear()
-  //   let month = new Date().getMonth()
-  //   let date = new Date().getDate()
-  //   let second = 0
-  //   let fajr = new Date(
-  //     year,
-  //     month,
-  //     date,
-  //     // dailyTimes[0].split(':')[0],
-  //     // dailyTimes[0].split(':')[1],
-  //     7,
-  //     17,
-  //     second
-  //   )
-  //   let dhuhr = new Date(
-  //     year,
-  //     month,
-  //     date,
-  //     // dailyTimes[2].split(':')[0],
-  //     // dailyTimes[2].split(':')[1],
-  //     7,
-  //     46,
-  //     second
-  //   )
-  //   let asr = new Date(
-  //     year,
-  //     month,
-  //     date,
-  //     // dailyTimes[3].split(':')[0],
-  //     // dailyTimes[3].split(':')[1],
-  //     7,
-  //     48,
-  //     second
-  //   )
-  //   let maghrib = new Date(
-  //     year,
-  //     month,
-  //     date,
-  //     // dailyTimes[4].split(':')[0],
-  //     // dailyTimes[4].split(':')[1],
-  //     7,
-  //     50,
-  //     second
-  //   )
-  //   console.log(
-  //     !(
-  //       isBefore(new Date(), asr) &&
-  //       !isAfter(new Date(), maghrib)
-  //     )
   //   )
   // }, 2000)
 
