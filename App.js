@@ -174,7 +174,6 @@ export default function App() {
   async function onReachingNextDay() {
     let today = lightFormat(new Date(), 'yyyy-MM-dd')
     let flushDay = await AsyncStorage.getItem(`@flushDay`)
-    console.log(today, flushDay)
     if (today === flushDay) {
       await setTimer()
       await setNextFlushDay()
