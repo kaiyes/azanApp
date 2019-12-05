@@ -208,7 +208,7 @@ export default function App() {
     </NavigationNativeContainer>
   )
 }
-
+console.disableYellowBox = true
 //is it monday ?
 //      yeah it is.                      // no this ain't monday
 //      okay then                                   Do Nothing
