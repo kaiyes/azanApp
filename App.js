@@ -8,6 +8,7 @@ import {
   isToday,
   isMonday,
   isWednesday,
+  isThursday,
   addDays,
   lightFormat,
   toDate,
@@ -59,17 +60,18 @@ export default function App() {
     requestPermissions: true
   })
 
-  async function setSchedule(salahName, salahTime) {
-    let date = lightFormat(new Date(), 'yyyy-MM-dd')
+  async function setSchedule(salahName, salahTime, date) {
+    console.log('setSchedule:', salahName, salahTime, date)
     const value = await AsyncStorage.getItem(
       `@${salahName}-${date}`
     )
+    console.log(value)
     if (value == null) {
       await AsyncStorage.setItem(
         `@${salahName}-${date}`,
         'set'
       )
-      PushNotification.localNotificationSchedule({
+      await PushNotification.localNotificationSchedule({
         date: salahTime,
         title: `${salahName} Salah`,
         message: '5 minutes to Salah',
@@ -83,17 +85,11 @@ export default function App() {
     return subMinutes(salahTime, 5)
   }
 
-  async function setTimer() {
+  async function setTimer(year, month, date) {
     let dailyTimes = await Time.filter(item => {
-      return (
-        item[0] == new Date().getMonth() + 1 &&
-        item[1] == new Date().getDate()
-      )
+      return item[0] == month && item[1] == date
     })
     let fiveSalah = dailyTimes[0].slice(2)
-    let year = new Date().getFullYear()
-    let month = new Date().getMonth()
-    let date = new Date().getDate()
     let second = 0
     let fajr = new Date(
       year,
@@ -163,9 +159,9 @@ export default function App() {
     }
   }
 
-  async function setNextFlushDay() {
+  async function setNextFlushDay(time) {
     let flushDay = lightFormat(
-      addDays(new Date(), 1),
+      addDays(new Date(), time),
       'yyyy-MM-dd'
     )
     await AsyncStorage.setItem(`@flushDay`, `${flushDay}`)
@@ -177,7 +173,7 @@ export default function App() {
     console.log(today, flushDay)
     if (today === flushDay) {
       await setTimer()
-      await setNextFlushDay()
+      await setNextFlushDay(7)
     }
   }
 
@@ -191,17 +187,40 @@ export default function App() {
     ])
   }
 
+  async function setAllTimers() {
+    let today = lightFormat(new Date(), 'yyyy-MM-dd')
+    await removeLocalData(today)
+
+    let firstDay = today.split('-')
+    let salahTime = new Date(
+      new Date().getFullYear(),
+      new Date().getMonth() + 1,
+      new Date().getDate(),
+      9,
+      37,
+      0
+    )
+    console.log('salahTime: ', salahTime)
+    return await setSchedule(
+      'Isha',
+      setDelay(salahTime),
+      today
+    )
+    //await setTimer(arr[0],arr[1],arr[2])
+  }
   useEffect(async () => {
-    await setTimer()
-    await onReachingNextDay()
+    await setAllTimers()
+    //await onReachingNextDay()
   }, [])
 
   // useInterval(async () => {
-  //   AsyncStorage.clear()
-  //   await PushNotification.cancelAllLocalNotifications()
-  //   let today = lightFormat(new Date(), 'yyyy-MM-dd')
-  //   console.log(today)
-  // }, 2000)
+  //  AsyncStorage.clear()
+  //  await PushNotification.cancelAllLocalNotifications()
+  // let today = lightFormat(new Date(), 'yyyy-MM-dd')
+  // let flushDay = await AsyncStorage.getItem(`@flushDay`)
+
+  //   console.log(toDate(1578195420000))
+  // }, 4000)
 
   return (
     <NavigationNativeContainer>
@@ -222,3 +241,32 @@ export default function App() {
 // ----------------
 // |              |
 // Do Nothing     run daily Timer() & weekly timer()
+
+// let second = lightFormat(
+//   addDays(new Date(), 1),
+//   'yyyy-MM-dd'
+// )
+// let third = lightFormat(
+//   addDays(new Date(), 2),
+//   'yyyy-MM-dd'
+// )
+// let fourth = lightFormat(
+//   addDays(new Date(), 3),
+//   'yyyy-MM-dd'
+// )
+// let fifth = lightFormat(
+//   addDays(new Date(), 4),
+//   'yyyy-MM-dd'
+// )
+// let sixth = lightFormat(
+//   addDays(new Date(), 5),
+//   'yyyy-MM-dd'
+// )
+// let seventh = lightFormat(
+//   addDays(new Date(), 6),
+//   'yyyy-MM-dd'
+// )
+// let flush = lightFormat(
+//   addDays(new Date(), 7),
+//   'yyyy-MM-dd'
+// )
