@@ -21,7 +21,7 @@
     "date-fns": "^2.8.1",
     "dayjs": "^1.8.17",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "16.9.0",
     "react-native": "0.61.3",
     "react-native-dropdownalert": "^4.2.0",
